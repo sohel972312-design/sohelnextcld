@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function About() {
   return (
     <section
-      id="about"
+      id="about" 
       // className="section-py py-16 sm:py-24 lg:py-32 relative"
       className="section-py py-16 sm:py-15 lg:py-2 relative"
       style={{
