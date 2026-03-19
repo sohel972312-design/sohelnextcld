@@ -5,15 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-   "start": "next start -p ${PORT:-3000}",
+    "start": "next start -p ${PORT:-3000}",
     "lint": "next lint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "mysql2": "^3.19.1",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "swiper": "^11.0.0",
+    "swiper": "^11.2.10",
     "vanilla-tilt": "^1.8.0"
   },
   "devDependencies": {
