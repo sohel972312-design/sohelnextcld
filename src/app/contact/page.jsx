@@ -1,29 +1,56 @@
+
+// ============================================================
+// FILE: app/contact/page.jsx
+// ============================================================
+"use client";
 import Link from "next/link";
-import Banner from "@/components/sections/Banner";
+import SectionHeading from "@/components/ui/SectionHeading";
+import CTASection from "@/components/ui/CTASection";
+import HeroSection from "@/components/ui/HeroSection";
+import ContactDetails from "@/components/pages/contact/ContactDetails";
+import ContactForm from "@/components/pages/contact/ContactForm";
+import FAQs from "@/components/pages/contact/FAQs";
+import ContactTicker from "@/components/pages/contact/ContactTicker";
+export default function ContactPage() {
 
-export const metadata = {
-  title: "Contact Sohel Malek | Get In Touch for Web Design Projects",
-  description: "Ready to start your web design project? Contact Sohel Malek for professional web design and development services. Let's discuss your requirements and bring your vision to life.",
-};
+  return (
+    <>
 
-export default function Contact() {
-    return(
-<>
-<Banner
-        title="Contact Me"
-        breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "Contact", href: null }
-        ]}
-        backgroundImage="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072"
+      <HeroSection
+        eyebrow="Contact"
+        title={<>Let&apos;s Work <span className="grad-text">Together</span></>}
+        subtitle="Have a project in mind? I'd love to hear about it. Drop me a message and I'll reply within 24 hours."
+        primaryLabel="Send Message"
+        primaryHref="/contact#contact-form"
+        secondaryLabel="WhatsApp Me"
+        secondaryHref="https://wa.me/+919723121537"
       />
-<div className="text-white"> 
-    Contact page new contact sam <br />
-    link to <Link className="text-white" href="/about">About</Link> <br />
-    link to <Link className="text-white" href="/">Home</Link>
-</div>
 
-</>
+      <ContactTicker />
 
-    );
-};
+      {/* ── Main Contact Grid ── */}
+      <section className="py-16 sm:py-24" style={{ background: "#101418" }}>
+        <div className="w93 px-4 sm:px-6">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+
+           <ContactDetails />
+           <ContactForm />
+          
+          </div>
+        </div>
+      </section>
+
+      <FAQs/>
+
+      {/* ── Quick Links CTA ── */}
+      <CTASection
+        eyebrow="Prefer a quick chat?"
+        title="I’m here to help whenever you’re ready"
+        description="Send your project details via WhatsApp or email and I’ll respond quickly with a custom plan."
+        primary={{ label: "Let’s Talk", href: "/contact#contact-form" }}
+        secondary={{ label: "Chat on WhatsApp", href: "https://wa.me/+919723121537" }}
+      />
+
+    </>
+  );
+}

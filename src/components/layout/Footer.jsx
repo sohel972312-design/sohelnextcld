@@ -16,14 +16,9 @@ export default function Footer() {
 
         {/* Logo */}
         <div className="text-center mb-6 sm:mb-8">
-          <span style={{
-            fontFamily: "'Syne',serif", fontStyle: "italic",
-            fontSize: "clamp(2rem,6vw,2.8rem)", fontWeight: 800,
-            background: "linear-gradient(135deg,#d4a017,#f0c040,#d4a017)",
-            backgroundSize: "200%", WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent", backgroundClip: "text",
-            animation: "shimmer 4s linear infinite", display: "inline-block",
-          }}>Ṡöḧël</span>
+          <Link href="#" className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
+          Sohel<span className="text-[#6cb8e6]">.</span>
+        </Link>
           <div className="text-white/30 text-xs tracking-widest uppercase mt-1">Web Designer &amp; Developer</div>
         </div>
 
@@ -63,12 +58,12 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="flex justify-center gap-3 sm:gap-4 mb-7 sm:mb-10">
           {[
-            { icon: "bi bi-github", href: "#", title: "GitHub" },
-            { icon: "bi bi-linkedin", href: "#", title: "LinkedIn" },
-            { icon: "bi bi-facebook", href: "#", title: "Facebook" },
-            { icon: "bi bi-instagram", href: "#", title: "Instagram" },
+            { icon: "bi bi-github", href: "https://github.com/sohelmalek", title: "GitHub" },
+            { icon: "bi bi-linkedin", href: "https://in.linkedin.com/in/sohel-malek-b4b846196", title: "LinkedIn" },
+            { icon: "bi bi-facebook", href: "https://www.facebook.com/sohelmalek03", title: "Facebook" },
+            { icon: "bi bi-instagram", href: "https://www.instagram.com/sohel_malek03", title: "Instagram" },
           ].map((s) => (
-            <Link key={s.title} href={s.href} className="fsb" title={s.title}>
+            <Link key={s.title} href={s.href} target="_blank" rel="noopener noreferrer" className="fsb" title={s.title}>
               <i className={s.icon} />
             </Link>
           ))}

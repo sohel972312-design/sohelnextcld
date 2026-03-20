@@ -16,12 +16,13 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#portfolio", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#testimonials", label: "Reviews" },
-    { href: "#contact", label: "Contact" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/#portfolio", label: "Projects" },
+    { href: "/#skills", label: "Skills" },
+    { href: "/#testimonials", label: "Reviews" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -36,7 +37,7 @@ export default function Header() {
       }}
     >
       <div className="w93 px-4 sm:px-6 flex items-center justify-between">
-        <Link href="#" className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
+        <Link href="/" className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
           Sohel<span className="text-[#6cb8e6]">.</span>
         </Link>
 
@@ -49,7 +50,7 @@ export default function Header() {
           ))}
         </ul>
 
-        <Link href="#contact" className="btn-p hidden md:inline-flex text-white font-display font-bold text-sm px-5 py-2 rounded-full items-center gap-2">
+        <Link href="/contact" className="btn-p hidden md:inline-flex text-white font-display font-bold text-sm px-5 py-2 rounded-full items-center gap-2">
           Hire Me <i className="bi bi-arrow-right" />
         </Link>
 
@@ -73,7 +74,7 @@ export default function Header() {
               </li>
             ))}
             <li>
-              <Link href="#contact" className="btn-p text-white font-display font-bold text-sm px-5 py-2.5 rounded-full text-center block mt-2" onClick={() => setMenuOpen(false)}>
+              <Link href="/contact" className="btn-p text-white font-display font-bold text-sm px-5 py-2.5 rounded-full text-center block mt-2" onClick={() => setMenuOpen(false)}>
                 Hire Me
               </Link>
             </li>

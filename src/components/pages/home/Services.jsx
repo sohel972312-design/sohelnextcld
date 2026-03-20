@@ -5,6 +5,7 @@
 // ============================================================
 "use client";
 import Link from "next/link";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const servicesData = [
   {
@@ -37,16 +38,18 @@ export default function Services() {
   return (
     <section id="services" className="section-py py-16 sm:py-15 lg:py-20 relative" style={{ background: "#101418" }}>
       <div className="w93 px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-16" data-aos="fade-up">
-          <div className="eyebrow mb-3">What I Do</div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-4">
-            Services I Offer
-          </h2>
-          <p className="text-white/50 text-sm sm:text-base max-w-xl mx-auto">
-            Delivering excellence through hands-on expertise — high-quality digital solutions.
-          </p>
-        </div>
-
+       
+        <SectionHeading
+          eyebrow="What I Do"
+          title={
+            <>Services I <span className="grad-text">Offer</span>
+            </>
+          }
+          description="Delivering excellence through hands-on expertise — high-quality digital solutions."
+          data-aos="fade-up"
+          className="mb-6 text-center"
+          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+        />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {servicesData.map((s, i) => (
             <div key={s.num} className="svc-card glass-card rounded-2xl p-5 sm:p-7 cursor-default"

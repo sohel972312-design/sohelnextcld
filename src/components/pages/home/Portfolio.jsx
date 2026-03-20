@@ -5,6 +5,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const portfolioItems = [
   { cat: "web", emoji: "🌐", emojiStyle: { background: "linear-gradient(135deg,#0d2b45,#1a6fa8)" }, ovStyle: { background: "rgba(13,43,69,.85)" }, ovTitle: "Business Website", tag: "Web Dev", tagClass: "text-[#6cb8e6]", title: "Modern Business Website", desc: "Responsive multi-page site with SEO" },
@@ -33,15 +34,26 @@ export default function Portfolio() {
       style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%,rgba(108,184,230,.07) 0%,transparent 70%),linear-gradient(180deg,#111416 0%,#0d1e2e 50%,#111416 100%)" }}
     >
       <div className="w93 px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-16" data-aos="fade-up">
-          <div className="eyebrow mb-3">My Work</div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-4">
-            Recent Projects
-          </h2>
-          <p className="text-white/50 text-sm sm:text-base max-w-xl mx-auto">
-            Showcasing creative projects blending design, strategy, and innovation.
-          </p>
-        </div>
+        
+
+
+        <SectionHeading
+          eyebrow="My Work"
+          title={
+            <>Recent <span className="grad-text">Projects</span>
+            </>
+          }
+          description="Showcasing creative projects blending design, strategy, and innovation."
+          data-aos="fade-up"
+          className="mb-6 text-center"
+          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+        />
+
+
+
+
+
+
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10" data-aos="fade-up" data-aos-delay="50">

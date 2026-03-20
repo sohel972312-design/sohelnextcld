@@ -5,6 +5,7 @@
 // ============================================================
 "use client";
 import { useRef, useEffect } from "react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const skillsData = [
   { icon: "bi bi-filetype-html text-orange-400", label: "HTML5 / CSS3", val: 95 },
@@ -72,15 +73,12 @@ export default function Skills() {
         style={{ background: "radial-gradient(circle,rgba(26,111,168,.07),transparent 70%)", filter: "blur(60px)" }} />
 
       <div className="w93 px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-10 sm:mb-16" data-aos="fade-up">
-          <div className="eyebrow mb-3">My Stack</div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-4">
-            Skills &amp; Technologies
-          </h2>
-          <p className="text-white/50 text-sm sm:text-base max-w-xl mx-auto">
-            The tools and technologies I use to bring ideas to life.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="My Stack"
+          title="Skills &amp; Technologies"
+          description="The tools and technologies I use to bring ideas to life."
+          data-aos="fade-up"
+        />
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-10">
           {/* Skill Bars */}

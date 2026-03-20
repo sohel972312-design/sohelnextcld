@@ -5,6 +5,7 @@
 // ============================================================
 "use client";
 import Link from "next/link";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function About() {
   return (
@@ -21,13 +22,13 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Image Column */}
-          <div className="relative flex justify-center" data-aos="fade-right">
+          <div className="relative flex justify-center w-min m-auto" data-aos="fade-right">
             <div
               className="about-ring absolute rounded-full"
               style={{ width: 420, height: 420, border: "1.5px dashed rgba(108,184,230,.1)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", animation: "spin 40s linear infinite" }}
             />
             <div
-              className="relative z-10 rounded-3xl overflow-hidden about-img-wrap"
+              className="relative z-10 rounded-3xl overflow-hidden about-img-wrap w-min m-auto"
               style={{ width: "clamp(240px,70vw,340px)", height: "clamp(280px,80vw,400px)", background: "linear-gradient(135deg,#0d2b45,#1a6fa8)", border: "1px solid rgba(108,184,230,.2)", boxShadow: "0 20px 60px rgba(0,0,0,.5)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -42,12 +43,12 @@ export default function About() {
                 <div className="text-[#6cb8e6] text-sm font-semibold mt-0.5">Web Designer &amp; Developer</div>
               </div>
             </div>
-            <div className="absolute about-float-r -right-2 sm:-right-4 md:right-16 top-12 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
+            <div className="absolute -top-2 -right-2 sm:-right-8 md:-right-14 md:top-6 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
               style={{ borderColor: "rgba(108,184,230,.2)" }}>
               <div className="font-display font-extrabold text-xl sm:text-2xl text-[#6cb8e6]">4+</div>
               <div className="text-xs text-white/50 tracking-wide">Years Exp.</div>
             </div>
-            <div className="absolute about-float-l -left-2 sm:-left-4 bottom-16 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
+            <div className="absolute top-4/12 md:top-2/4 xl:-left-11 bottom-auto -left-4 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
               style={{ borderColor: "rgba(230,57,70,.2)" }}>
               <div className="font-display font-extrabold text-xl sm:text-2xl" style={{ color: "#e63946" }}>13+</div>
               <div className="text-xs text-white/50 tracking-wide">Clients</div>
@@ -56,11 +57,17 @@ export default function About() {
 
           {/* Text Column */}
           <div data-aos="fade-left" data-aos-delay="100">
-            <div className="eyebrow mb-3">About Me</div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5">
-              Crafting Digital<br />Experiences That<br />
-              <span className="grad-text">Convert &amp; Inspire</span>
-            </h2>
+            <SectionHeading
+              eyebrow="About Me"
+              title={
+                <>
+                  Crafting Digital Experiences That 
+                  <span className="grad-text"> Convert &amp; Inspire</span>
+                </>
+              }
+              className="mb-6"
+              titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+            />
             <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4">
               I&apos;m a professional Web Designer, WordPress Developer, and SEO Specialist based in Gujarat, India.
               I help brands grow online through clean, fast, and conversion-focused websites.

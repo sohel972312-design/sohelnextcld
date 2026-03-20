@@ -42,8 +42,12 @@ export default function Hero() {
     document.querySelectorAll(".btn-p").forEach((btn) => {
       btn.addEventListener("mousemove", (e) => {
         const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / cra2;
-        const y = e.clientY - rect.top - rect.height / 2;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        if (!Number.isFinite(centerX) || !Number.isFinite(centerY)) return;
+
+        const x = e.clientX - rect.left - centerX;
+        const y = e.clientY - rect.top - centerY;
         btn.style.transform = `translate(${x * 0.1}px,${y * 0.1}px) translateY(-3px)`;
       });
       btn.addEventListener("mouseleave", () => { btn.style.transform = ""; });

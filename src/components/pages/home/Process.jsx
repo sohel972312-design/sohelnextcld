@@ -4,6 +4,7 @@
 // FILE: components/Process.jsx
 // ============================================================
 "use client";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const processSteps = [
   {
@@ -39,11 +40,19 @@ export default function Process() {
       <div className="absolute inset-0 pointer-events-none"
         style={{ backgroundImage: "linear-gradient(rgba(108,184,230,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(108,184,230,.03) 1px,transparent 1px)", backgroundSize: "50px 50px" }} />
       <div className="w93 px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-8 sm:mb-12" data-aos="fade-up">
-          <div className="eyebrow mb-3">How I Work</div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-tight text-white leading-tight mb-3">My Process</h2>
-          <p className="text-white/50 text-sm max-w-md mx-auto">A clear, structured workflow from concept to launch — every time.</p>
-        </div>
+        
+        <SectionHeading
+                  eyebrow="How I Work"
+                  title={
+                    <>My <span className="grad-text">Process</span>
+                    </>
+                  }
+                  description="A clear, structured workflow from concept to launch — every time."
+                  data-aos="fade-up"
+                  className="mb-6 text-center"
+                  titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+                />
+        
         <div className="grid sm:grid-cols-3 gap-4 sm:gap-6" data-aos="fade-up" data-aos-delay="80">
           {processSteps.map((s, i) => (
             <div key={s.num} className="proc-card" data-aos="zoom-in" data-aos-delay={i * 120}>
