@@ -42,7 +42,7 @@ export default function About() {
                 <div className="text-[#6cb8e6] text-sm font-semibold mt-0.5">Web Designer &amp; Developer</div>
               </div>
             </div>
-            <div className="absolute about-float-r -right-2 sm:-right-4 top-12 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
+            <div className="absolute about-float-r -right-2 sm:-right-4 md:right-16 top-12 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-center z-20"
               style={{ borderColor: "rgba(108,184,230,.2)" }}>
               <div className="font-display font-extrabold text-xl sm:text-2xl text-[#6cb8e6]">4+</div>
               <div className="text-xs text-white/50 tracking-wide">Years Exp.</div>

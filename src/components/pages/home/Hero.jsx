@@ -12,17 +12,29 @@ export default function Hero() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
+
           const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+
           let count = 0;
           const step = target / (1800 / 16);
+
           const timer = setInterval(() => {
             count += step;
-            if (count >= target) { count = target; clearInterval(timer); }
-            el.textContent = Math.floor(count);
+
+            if (count >= target) {
+              count = target;
+              el.textContent = target + suffix; // ✅ show suffix at end
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(count) + suffix; // ✅ show suffix while counting
+            }
           }, 16);
+
           observer.disconnect();
         });
       }, { threshold: 0.5 });
+
       observer.observe(el);
     });
 
@@ -30,7 +42,7 @@ export default function Hero() {
     document.querySelectorAll(".btn-p").forEach((btn) => {
       btn.addEventListener("mousemove", (e) => {
         const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
+        const x = e.clientX - rect.left - rect.width / cra2;
         const y = e.clientY - rect.top - rect.height / 2;
         btn.style.transform = `translate(${x * 0.1}px,${y * 0.1}px) translateY(-3px)`;
       });
@@ -104,20 +116,29 @@ export default function Hero() {
             </div>
 
             {/* Stats */}
-            <div className="animate-fade-up hero-stats flex gap-5 sm:gap-8 pt-5 sm:pt-6 border-t border-white/10"
-              style={{ animationDelay: ".9s" }}>
-              {[{ target: 4, label: "YRS EXP" }, { target: 13, label: "CLIENTS" }, { target: 30, label: "PROJECTS" }].map((s) => (
+            <div
+              className="animate-fade-up hero-stats flex gap-5 sm:gap-8 pt-5 sm:pt-6 border-t border-white/10"
+              style={{ animationDelay: ".9s" }}
+            >
+              {[
+                { target: 4, label: "YRS EXP", suffix: "+" },
+                { target: 13, label: "CLIENTS", suffix: "+" },
+                { target: 30, label: "PROJECTS", suffix: "+" },
+                { target: 100, label: "SATISFIED", suffix: "%" },
+              ].map((s) => (
                 <div key={s.label}>
-                  <div className="font-display font-extrabold text-2xl sm:text-3xl text-white count-up" data-target={s.target}>0</div>
-                  <div className="text-xs text-white/50 tracking-widest mt-1">{s.label}</div>
+                  <div
+                    className="font-display font-extrabold text-2xl sm:text-3xl text-white count-up"
+                    data-target={s.target}
+                    data-suffix={s.suffix}
+                  >
+                    0{s.suffix}
+                  </div>
+                  <div className="text-xs text-white/50 tracking-widest mt-1">
+                    {s.label}
+                  </div>
                 </div>
               ))}
-              <div>
-                <div className="font-display font-extrabold text-2xl sm:text-3xl text-white">
-                  100<span className="text-[#6cb8e6]">%</span>
-                </div>
-                <div className="text-xs text-white/50 tracking-widest mt-1">SATISFIED</div>
-              </div>
             </div>
           </div>
 
