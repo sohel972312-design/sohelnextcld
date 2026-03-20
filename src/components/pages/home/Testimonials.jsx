@@ -36,7 +36,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="section-py py-16 sm:py-24 lg:py-32"
+      className="section-py py-16 sm:py-15 lg:py-20 relative"
       style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%,rgba(26,111,168,.1),transparent 70%),#0a0e12" }}
     >
       <div className="w93 px-4 sm:px-6">

@@ -6,8 +6,7 @@ import Portfolio from "@/components/pages/home/Portfolio";
 import Skills from "@/components/pages/home/Skills";
 import Process from "@/components/pages/home/Process";
 import Testimonials from "@/components/pages/home/Testimonials";
-import CTA from "@/components/pages/home/CTA";
-import LetsCta from "@/components/pages/home/LetsCta";
+import CTA from "@/components/pages/home/CTA"; 
 import GlobalEffects from "@/components/ui/GlobalEffects"; 
 
 export const metadata = {
@@ -30,9 +29,7 @@ export default function Home() {
         <Skills />
         <Process />
         <Testimonials />
-        <CTA />
-        <Testimonials />
-        <LetsCta />
+        <CTA />  
         {/* <Footer />  */}
       </main>
     </>

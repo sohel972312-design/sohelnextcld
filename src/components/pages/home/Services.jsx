@@ -35,7 +35,7 @@ const servicesData = [
 
 export default function Services() {
   return (
-    <section id="services" className="section-py py-16 sm:py-24 lg:py-32 relative" style={{ background: "#101418" }}>
+    <section id="services" className="section-py py-16 sm:py-15 lg:py-20 relative" style={{ background: "#101418" }}>
       <div className="w93 px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16" data-aos="fade-up">
           <div className="eyebrow mb-3">What I Do</div>

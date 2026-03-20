@@ -65,7 +65,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="section-py py-16 sm:py-24 lg:py-32 relative" style={{ background: "#101418" }}>
+    <section id="skills" className="section-py py-16 sm:py-15 lg:py-20 relative" style={{ background: "#101418" }}>
       <div className="absolute left-0 top-0 w-72 sm:w-96 h-72 sm:h-96 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle,rgba(230,57,70,.05),transparent 70%)", filter: "blur(60px)" }} />
       <div className="absolute right-0 bottom-0 w-72 sm:w-96 h-72 sm:h-96 rounded-full pointer-events-none"

@@ -29,7 +29,7 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="section-py py-16 sm:py-24 lg:py-32"
+      className="section-py py-16 sm:py-15 lg:py-20 relative"
       style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%,rgba(108,184,230,.07) 0%,transparent 70%),linear-gradient(180deg,#111416 0%,#0d1e2e 50%,#111416 100%)" }}
     >
       <div className="w93 px-4 sm:px-6">
