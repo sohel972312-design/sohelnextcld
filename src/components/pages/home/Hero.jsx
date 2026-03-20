@@ -74,7 +74,7 @@ export default function Hero() {
               className="animate-fade-left font-display font-extrabold leading-tight tracking-tight mb-3 sm:mb-4"
               style={{ fontSize: "clamp(2.2rem,6vw,5rem)", animationDelay: ".3s" }}
             >
-              Hi, I&apos;m<br />
+              H12i, I&apos;m<br />
               <span className="grad-text">Sohel Malek</span>
             </h1>
 
