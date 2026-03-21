@@ -5,25 +5,81 @@
 // ============================================================
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import CTASection from "@/components/ui/CTASection";
-
+import { useEffect, useState, useRef } from "react";
 export default function BlogInner({ post, related }) {
+  const sidebarRef = useRef(null);
+  const placeholderRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const relatedRef = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
+  
+      const placeholderRect = placeholderRef.current.getBoundingClientRect();
+      const relatedRect = relatedRef.current.getBoundingClientRect();
+  
+      const HEADER_HEIGHT = 90;
+      const SIDEBAR_HEIGHT = sidebarRef.current.offsetHeight;
+  
+      // ✅ TOP → normal
+      if (placeholderRect.top > HEADER_HEIGHT) {
+        setIsSticky(false);
+        return;
+      }
+  
+      // ✅ BOTTOM → stop before related section
+      if (relatedRect.top <= HEADER_HEIGHT + SIDEBAR_HEIGHT + 20) {
+        setIsSticky("top");
+        return;
+      }
+  
+      // ✅ MIDDLE → fixed
+      setIsSticky(true);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+
+
+
+
+
   const [progress, setProgress] = useState(0);
   const [tocOpen, setTocOpen] = useState(false);
 
   // Reading progress bar
   useEffect(() => {
-    const onScroll = () => {
-      const article = document.getElementById("article-body");
-      if (!article) return;
-      const rect = article.getBoundingClientRect();
-      const total = article.offsetHeight;
-      const read = Math.max(0, -rect.top);
-      setProgress(Math.min(100, (read / total) * 100));
+    const handleScroll = () => {
+      if (!placeholderRef.current || !relatedRef.current) return;
+
+      const placeholderRect = placeholderRef.current.getBoundingClientRect();
+      const relatedRect = relatedRef.current.getBoundingClientRect();
+
+      const HEADER_HEIGHT = 90;
+      const SIDEBAR_HEIGHT = sidebarRef.current?.offsetHeight || 0;
+
+      // 🔹 Top → normal
+      if (placeholderRect.top > HEADER_HEIGHT) {
+        setIsSticky(false);
+        return;
+      }
+
+      // 🔹 Bottom hit (Related section)
+      if (relatedRect.top <= HEADER_HEIGHT + SIDEBAR_HEIGHT) {
+        setIsSticky("bottom");
+        return;
+      }
+
+      // 🔹 Middle → fixed
+      setIsSticky(true);
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Parse headings for TOC
@@ -59,12 +115,13 @@ export default function BlogInner({ post, related }) {
             <i className="bi bi-chevron-right text-[10px]" />
             <Link href="/blog" className="hover:text-[#6cb8e6] transition-colors">Blog</Link>
             <i className="bi bi-chevron-right text-[10px]" />
-            <span>{post.category}</span>
+            <span style={{ color: post.catColor }}>{post.category}</span>
           </div>
 
           {/* Category */}
           <div className="mb-4" data-aos="fade-up">
-            <span className="text-xs font-bold px-3 py-1.5 rounded-full font-display" >
+            <span className="text-xs font-bold px-3 py-1.5 rounded-full font-display"
+              style={{ background: post.catBg, color: post.catColor, border: `1px solid ${post.catColor}33` }}>
               {post.category}
             </span>
           </div>
@@ -97,37 +154,25 @@ export default function BlogInner({ post, related }) {
             <div className="h-8 w-px hidden sm:block" style={{ background: "rgba(255,255,255,.1)" }} />
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/45">
               <span className="flex items-center gap-1.5"><i className="bi bi-calendar3 text-[#6cb8e6]" /> {post.date}</span>
+              {/* <span className="flex items-center gap-1.5"><i className="bi bi-clock text-[#6cb8e6]" /> {post.readTime}</span> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Thumbnail ── */}
- 
 
       {/* ── Content Area ── */}
-      <section className="py-12 sm:py-16" style={{ background: "#111416" }}>
+      <section className="py-12 sm:py-16" style={{ background: "#111416" }} id="related-section">
         <div className="w93 px-4 sm:px-6 max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-[1fr_260px] gap-10 lg:gap-12 items-start">
 
             {/* Article */}
             <article id="article-body">
-              <div className="w-full">
-                <img
-                  src={post.bannerImage}
-                  alt={post.title}
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-              {/* Gradient overlay */}
-              {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" /> */}
-
-              {/* Title on image */}
-              {/* <div className="absolute bottom-4 left-4 right-4">
-                <h1 className="text-white text-lg sm:text-2xl font-bold">
-                  {post.title}
-                </h1>
-              </div> */}
+              <img
+                src={post.bannerImage}
+                alt={post.title}
+                className="w-full h-full object-cover rounded-2xl"
+              />
               <MarkdownRenderer content={post.content} />
 
               {/* Tags */}
@@ -178,61 +223,89 @@ export default function BlogInner({ post, related }) {
             </article>
 
             {/* Sidebar */}
-            <aside className="hidden lg:block sticky top-28">
+            <aside className="hidden lg:block relative">
+              <div ref={placeholderRef} />
 
-              {/* TOC */}
-              {headings.length > 0 && (
-                <div className="rounded-2xl p-5 mb-5"
-                  style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                  <div className="font-display font-extrabold text-sm text-white mb-4 flex items-center gap-2">
-                    <i className="bi bi-list-ul text-[#6cb8e6]" /> Table of Contents
-                  </div>
-                  <ul className="space-y-2">
-                    {headings.map((h) => (
-                      <li key={h.id}>
-                        <a href={`#${h.id}`}
-                          className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2">
-                          <span className="text-[#6cb8e6] mt-0.5">›</span>
-                          {h.text}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <div
+                ref={sidebarRef}
+                className={`w-[260px] ${isSticky === true
+                    ? "fixed"
+                    : isSticky === "bottom"
+                      ? "absolute"
+                      : "relative"
+                  }`}
+                  style={{
+                    position:
+                      isSticky === true
+                        ? "fixed"
+                        : isSticky === "bottom"
+                        ? "absolute"
+                        : "relative",
+                  
+                    top:
+                      isSticky === true
+                        ? "90px"
+                        : isSticky === "bottom"
+                        ? `${relatedRef.current.offsetTop - sidebarRef.current.offsetHeight - 20}px`
+                        : "auto",
+                  }}
+              >
+                <div className="space-y-5">
+                  {/* TOC */}
+                  {headings.length > 0 && (
+                    <div className="rounded-2xl p-5 mb-5"
+                      style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
+                      <div className="font-display font-extrabold text-sm text-white mb-4 flex items-center gap-2">
+                        <i className="bi bi-list-ul text-[#6cb8e6]" /> Table of Contents
+                      </div>
+                      <ul className="space-y-2">
+                        {headings.map((h) => (
+                          <li key={h.id}>
+                            <a href={`#${h.id}`}
+                              className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2">
+                              <span className="text-[#6cb8e6] mt-0.5">›</span>
+                              {h.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
-              {/* About Author Sidebar */}
-              <div className="rounded-2xl p-5 mb-5 text-center"
-                style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={post.authorAvatar} alt={post.author}
-                  className="w-14 h-14 rounded-2xl object-cover mx-auto mb-3"
-                  style={{ border: "2px solid rgba(108,184,230,.25)" }} />
-                <div className="font-display font-extrabold text-sm text-white mb-0.5">{post.author}</div>
-                <div className="text-xs text-[#6cb8e6] font-bold mb-3">Web Designer &amp; Dev</div>
-                <Link href="/contact"
-                  className="btn-p text-white font-display font-bold text-xs px-4 py-2 rounded-full inline-flex items-center gap-1.5">
-                  Hire Me <i className="bi bi-arrow-right" />
-                </Link>
-              </div>
-
-              {/* Share Sidebar */}
-              <div className="rounded-2xl p-5"
-                style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                <div className="font-display font-extrabold text-sm text-white mb-4">Share this Article</div>
-                <div className="flex gap-2">
-                  {[
-                    { icon: "bi bi-twitter-x", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}%20https://sohelmalek.com/blog/${post.slug}` },
-                    { icon: "bi bi-linkedin", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://sohelmalek.com/blog/${post.slug}`)}` },
-                    { icon: "bi bi-whatsapp", href: `https://wa.me/?text=${encodeURIComponent(`${post.title} — https://sohelmalek.com/blog/${post.slug}`)}` },
-                    { icon: "bi bi-link-45deg", href: `https://sohelmalek.com/blog/${post.slug}` },
-                  ].map((s) => (
-                    <Link key={s.icon} href={s.href} target="_blank" rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-xl flex items-center justify-center text-white/45 text-sm transition-all hover:-translate-y-1 hover:text-[#6cb8e6]"
-                      style={{ background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.08)" }}>
-                      <i className={s.icon} />
+                  {/* About Author Sidebar */}
+                  <div className="rounded-2xl p-5 mb-5 text-center"
+                    style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={post.authorAvatar} alt={post.author}
+                      className="w-14 h-14 rounded-2xl object-cover mx-auto mb-3"
+                      style={{ border: "2px solid rgba(108,184,230,.25)" }} />
+                    <div className="font-display font-extrabold text-sm text-white mb-0.5">{post.author}</div>
+                    <div className="text-xs text-[#6cb8e6] font-bold mb-3">Web Designer &amp; Dev</div>
+                    <Link href="/contact"
+                      className="btn-p text-white font-display font-bold text-xs px-4 py-2 rounded-full inline-flex items-center gap-1.5">
+                      Hire Me <i className="bi bi-arrow-right" />
                     </Link>
-                  ))}
+                  </div>
+
+                  {/* Share Sidebar */}
+                  <div className="rounded-2xl p-5"
+                    style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
+                    <div className="font-display font-extrabold text-sm text-white mb-4">Share this Article</div>
+                    <div className="flex gap-2">
+                      {[
+                        { icon: "bi bi-twitter-x", href: "#" },
+                        { icon: "bi bi-linkedin", href: "#" },
+                        { icon: "bi bi-whatsapp", href: "#" },
+                        { icon: "bi bi-link-45deg", href: "#" },
+                      ].map((s) => (
+                        <Link key={s.icon} href={s.href} target="_blank"
+                          className="w-9 h-9 rounded-xl flex items-center justify-center text-white/45 text-sm transition-all hover:-translate-y-1 hover:text-[#6cb8e6]"
+                          style={{ background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.08)" }}>
+                          <i className={s.icon} />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -243,7 +316,7 @@ export default function BlogInner({ post, related }) {
 
       {/* ── Related Posts ── */}
       {related.length > 0 && (
-        <section className="py-16" style={{ background: "#101418" }}>
+        <section className="py-16" style={{ background: "#101418" }} ref={relatedRef}>
           <div className="w93 px-4 sm:px-6">
             <div className="eyebrow mb-3 text-center">Keep Reading</div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white text-center mb-10">Related Articles</h2>
@@ -253,9 +326,17 @@ export default function BlogInner({ post, related }) {
                   className="group rounded-2xl overflow-hidden flex flex-col transition-all hover:-translate-y-1.5"
                   style={{ background: "#1c2128", border: "1px solid rgba(255,255,255,.06)" }}
                   data-aos="fade-up" data-aos-delay={i * 80}>
-
+                  <div className="h-36 flex items-center justify-center text-4xl relative" style={{ background: rpost.thumbBg }}>
+                    {rpost.emoji}
+                    <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full font-display"
+                      style={{ background: rpost.catBg, color: rpost.catColor }}>
+                      {rpost.category}
+                    </span>
+                  </div>
                   <div className="p-4 flex flex-col flex-1">
-
+                    <div className="flex items-center gap-2 text-xs text-white/35 mb-2">
+                      <span><i className="bi bi-clock" /> {rpost.readTime}</span>
+                    </div>
                     <h3 className="font-display font-extrabold text-sm text-white leading-snug mb-2 group-hover:text-[#6cb8e6] transition-colors line-clamp-2">{rpost.title}</h3>
                     <span className="text-xs font-bold text-[#6cb8e6] flex items-center gap-1 mt-auto group-hover:gap-2 transition-all">
                       Read Article <i className="bi bi-arrow-right" />
@@ -278,7 +359,7 @@ export default function BlogInner({ post, related }) {
         title={<>Let&apos;s work together on your <span className="grad-text">next project</span></>}
         description="From design to development to SEO — I handle everything so you can focus on your business."
         primary={{ label: "Start a Project", href: "/contact" }}
-        secondary={{ label: "WhatsApp Me", href: "https://wa.me/+919723121537" }}
+        secondary={{ label: "View My Work", href: "/projects" }}
       />
     </>
   );

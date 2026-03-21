@@ -11,7 +11,7 @@ export default function CTA() {
       eyebrow="Let's Build Together"
       title="Have a Project in Mind?"
       description="I'm available for freelance work. Let's create something amazing together."
-      primary={{ label: "Start a Project", href: "#contact" }}
+      primary={{ label: "Start a Project", href: "/contact" }}
       secondary={{ label: "WhatsApp Me", href: "https://wa.me/+919723121537" }}
     />
   );

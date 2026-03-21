@@ -16,7 +16,7 @@ export default function ContactDetails(params) {
                     { icon: "bi bi-geo-alt-fill", label: "Location", value: "Borsad, Gujarat, India", href: null },
                     { icon: "bi bi-envelope-fill", label: "Email", value: "sohel@sohelmalek.com", href: "mailto:sohel@sohelmalek.com" },
                     { icon: "bi bi-telephone-fill", label: "Phone / WhatsApp", value: "+91 97231 21537", href: "tel:+919723121537" },
-                    { icon: "bi bi-clock-fill", label: "Working Hours", value: "Mon–Sat, 9AM–7PM IST", href: null },
+                    // { icon: "bi bi-clock-fill", label: "Working Hours", value: "Mon–Sat, 9AM–7PM IST", href: null },
                     { icon: "bi bi-lightning-charge-fill", label: "Response Time", value: "Within 24 hours", href: null },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4 group">

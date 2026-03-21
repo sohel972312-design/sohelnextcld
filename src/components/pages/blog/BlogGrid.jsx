@@ -4,32 +4,15 @@
 // FILE: components/pages/blog/BlogGrid.jsx
 // ============================================================
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { blogPosts } from "@/data/blogPosts";
 
 const categories = ["All", "Web Design", "WordPress", "SEO", "Tailwind CSS", "UI/UX"];
 
 export default function BlogGrid() {
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [active, setActive] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
-
-  useEffect(() => {
-    const fetchBlogPosts = async () => {
-      try {
-        const response = await fetch('/api/blog');
-        const data = await response.json();
-        setBlogPosts(data);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogPosts();
-  }, []);
 
   const filtered = active === "All"
     ? blogPosts
@@ -37,26 +20,14 @@ export default function BlogGrid() {
 
   const visible = filtered.slice(0, visibleCount);
 
-  if (loading) {
-    return (
-      <section id="blog-grid" className="py-16 sm:py-24" style={{ background: "#101418" }}>
-        <div className="w93 px-4 sm:px-6">
-          <div className="text-center text-white/60">Loading blog posts...</div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="blog-grid" className="py-16 sm:py-24" style={{ background: "#101418" }}>
       <div className="w93 px-4 sm:px-6">
 
         {/* Featured Post */}
-        {blogPosts.length > 0 && (
-          <div className="mb-12" data-aos="fade-up">
-            <FeaturedPost post={blogPosts[0]} />
-          </div>
-        )}
+        <div className="mb-12" data-aos="fade-up">
+          <FeaturedPost post={blogPosts[0]} />
+        </div>
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" data-aos="fade-up">
@@ -75,8 +46,6 @@ export default function BlogGrid() {
             </button>
           ))}
         </div>
-
-
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
@@ -107,14 +76,15 @@ function FeaturedPost({ post }) {
     <Link href={`/blog/${post.slug}`} className="group grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
       style={{ background: "#1c2128", border: "1px solid rgba(255,255,255,.06)", boxShadow: "0 0 0 0 rgba(108,184,230,.0)" }}>
       {/* Thumbnail */}
-      <div className="h-52 sm:h-64 lg:h-full flex items-center justify-center text-6xl relative overflow-hidden" >
+      <div className="h-52 sm:h-64 lg:h-full flex items-center justify-center text-6xl relative overflow-hidden"
+        style={{ background: post.thumbBg, minHeight: 240 }}>
         <img
           src={post.bannerImage}
           alt={post.title}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg,transparent 60%,rgba(0,0,0,.3))" }} />
-        <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full font-display"
+        <span className="absolute top-4 right-26 text-xs font-bold px-3 py-1 rounded-full font-display"
           style={{ background: post.catBg, color: post.catColor, border: `1px solid ${post.catColor}33` }}>
           {post.category}
         </span>
@@ -128,8 +98,8 @@ function FeaturedPost({ post }) {
         <div>
           <div className="flex items-center gap-3 text-xs text-white/40 mb-4">
             <span className="flex items-center gap-1"><i className="bi bi-calendar3" /> {post.date}</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-
+            {/* <span className="w-1 h-1 rounded-full bg-white/20" /> */}
+            {/* <span className="flex items-center gap-1"><i className="bi bi-clock" /> {post.readTime}</span> */}
           </div>
           <h2 className="font-display font-extrabold text-xl sm:text-2xl text-white leading-tight mb-3 group-hover:text-[#6cb8e6] transition-colors">
             {post.title}
@@ -170,7 +140,8 @@ function BlogCard({ post, delay }) {
       data-aos-delay={delay}
     >
       {/* Thumbnail */}
-      <div className="h-44 sm:h-48 flex items-center justify-center relative overflow-hidden" >
+      <div className="h-auto flex items-center justify-center relative overflow-hidden"
+        style={{ background: post.thumbBg }}>
         <img
           src={post.bannerImage}
           alt={post.title}
@@ -178,7 +149,8 @@ function BlogCard({ post, delay }) {
         />
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
           style={{ background: "rgba(13,43,69,.5)" }} />
-        <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full font-display" >
+        <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full font-display"
+          style={{ background: post.catBg, color: post.catColor, border: `1px solid ${post.catColor}33` }}>
           {post.category}
         </span>
       </div>
@@ -188,6 +160,7 @@ function BlogCard({ post, delay }) {
         <div className="flex items-center gap-3 text-xs text-white/35 mb-3">
           <span className="flex items-center gap-1"><i className="bi bi-calendar3" /> {post.date}</span>
           <span className="w-1 h-1 rounded-full bg-white/15" />
+          <span className="flex items-center gap-1"><i className="bi bi-clock" /> {post.readTime}</span>
         </div>
         <h3 className="font-display font-extrabold text-sm sm:text-base text-white leading-snug mb-2 group-hover:text-[#6cb8e6] transition-colors line-clamp-2">
           {post.title}
@@ -212,4 +185,5 @@ function BlogCard({ post, delay }) {
     </Link>
   );
 }
+
 

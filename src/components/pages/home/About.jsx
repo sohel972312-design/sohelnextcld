@@ -81,20 +81,21 @@ export default function About() {
               {[
                 { label: "Name", value: "Sohel Malek", cls: "font-display font-bold text-sm text-white" },
                 { label: "Location", value: "Gujarat, India", cls: "font-display font-bold text-sm text-white" },
-                { label: "Email", value: "sohel@sohelmalek.com", cls: "font-display font-bold text-xs text-[#6cb8e6] truncate" },
+                { label: "Email", value: "sohel@sohelmalek.com", cls: "font-display font-bold text-xs w-full text-[#6cb8e6] truncate" },
+                { label: "Phone", value: "+9197231 21537", cls: "font-display font-bold text-xs w-full text-[#6cb8e6] truncate" },
               ].map((item) => (
                 <div key={item.label} className="glass-card rounded-xl p-3 sm:p-4" style={{ borderColor: "rgba(108,184,230,.12)" }}>
                   <div className="text-xs text-white/40 uppercase tracking-widest mb-1">{item.label}</div>
                   <div className={item.cls}>{item.value}</div>
                 </div>
               ))}
-              <div className="glass-card rounded-xl p-3 sm:p-4" style={{ borderColor: "rgba(108,184,230,.12)" }}>
+              {/* <div className="glass-card rounded-xl p-3 sm:p-4" style={{ borderColor: "rgba(108,184,230,.12)" }}>
                 <div className="text-xs text-white/40 uppercase tracking-widest mb-1">Availability</div>
                 <div className="font-display font-bold text-sm text-green-400 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0" />
                   Open to Work
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-wrap gap-3">
