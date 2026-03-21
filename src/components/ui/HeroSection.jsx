@@ -12,7 +12,7 @@ export default function HeroSection({
   secondaryHref = "https://wa.me/+919723121537",
   className = "",
   style = {},
-  sectionClassName = "relative py-20 sm:pb-24 md:pt-36 overflow-hidden",
+  sectionClassName = "relative py-20 pt-32 sm:pb-24 md:pt-36 overflow-hidden",
   headingClassName = "mb-8",
   ...props
 }) {
@@ -25,7 +25,7 @@ export default function HeroSection({
       }}
       {...props}
     >
-      <div className="hero-grid absolute inset-0 pointer-events-none" />
+      <div className="hero-grid absolute  inset-0 pointer-events-none" />
       <div className="w93 px-4 sm:px-6 relative z-10 text-center">
         <SectionHeading
           eyebrow={eyebrow}

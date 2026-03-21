@@ -74,7 +74,7 @@ export default function JourneySection() {
           
           <div className="relative max-w-3xl mx-auto">
             {/* Vertical Line */}
-            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-px"
+            <div className="absolute left-8 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-px"
               style={{ background: "linear-gradient(180deg,transparent,rgba(108,184,230,.3) 10%,rgba(108,184,230,.3) 90%,transparent)" }} />
             <div className="space-y-10">
               {timelineData.map((item, i) => (

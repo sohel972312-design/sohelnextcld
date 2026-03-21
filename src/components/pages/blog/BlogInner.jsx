@@ -59,13 +59,12 @@ export default function BlogInner({ post, related }) {
             <i className="bi bi-chevron-right text-[10px]" />
             <Link href="/blog" className="hover:text-[#6cb8e6] transition-colors">Blog</Link>
             <i className="bi bi-chevron-right text-[10px]" />
-            <span style={{ color: post.catColor }}>{post.category}</span>
+            <span>{post.category}</span>
           </div>
 
           {/* Category */}
           <div className="mb-4" data-aos="fade-up">
-            <span className="text-xs font-bold px-3 py-1.5 rounded-full font-display"
-              style={{ background: post.catBg, color: post.catColor, border: `1px solid ${post.catColor}33` }}>
+            <span className="text-xs font-bold px-3 py-1.5 rounded-full font-display" >
               {post.category}
             </span>
           </div>
@@ -98,21 +97,13 @@ export default function BlogInner({ post, related }) {
             <div className="h-8 w-px hidden sm:block" style={{ background: "rgba(255,255,255,.1)" }} />
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/45">
               <span className="flex items-center gap-1.5"><i className="bi bi-calendar3 text-[#6cb8e6]" /> {post.date}</span>
-              <span className="flex items-center gap-1.5"><i className="bi bi-clock text-[#6cb8e6]" /> {post.readTime}</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Thumbnail ── */}
-      <div className="w93 px-4 sm:px-6 max-w-4xl mx-auto -mt-4 mb-0 relative z-10">
-        <div
-          className="rounded-2xl h-48 sm:h-64 flex items-center justify-center text-6xl sm:text-8xl overflow-hidden"
-          style={{ background: post.thumbBg, border: "1px solid rgba(255,255,255,.06)" }}
-        >
-          {post.emoji}
-        </div>
-      </div>
+
 
       {/* ── Content Area ── */}
       <section className="py-12 sm:py-16" style={{ background: "#111416" }}>
@@ -121,6 +112,22 @@ export default function BlogInner({ post, related }) {
 
             {/* Article */}
             <article id="article-body">
+              <div className="w-full">
+                <img
+                  src={post.bannerImage}
+                  alt={post.title}
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+              </div>
+              {/* Gradient overlay */}
+              {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" /> */}
+
+              {/* Title on image */}
+              {/* <div className="absolute bottom-4 left-4 right-4">
+                <h1 className="text-white text-lg sm:text-2xl font-bold">
+                  {post.title}
+                </h1>
+              </div> */}
               <MarkdownRenderer content={post.content} />
 
               {/* Tags */}
@@ -246,17 +253,9 @@ export default function BlogInner({ post, related }) {
                   className="group rounded-2xl overflow-hidden flex flex-col transition-all hover:-translate-y-1.5"
                   style={{ background: "#1c2128", border: "1px solid rgba(255,255,255,.06)" }}
                   data-aos="fade-up" data-aos-delay={i * 80}>
-                  <div className="h-36 flex items-center justify-center text-4xl relative" style={{ background: rpost.thumbBg }}>
-                    {rpost.emoji}
-                    <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full font-display"
-                      style={{ background: rpost.catBg, color: rpost.catColor }}>
-                      {rpost.category}
-                    </span>
-                  </div>
+
                   <div className="p-4 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 text-xs text-white/35 mb-2">
-                      <span><i className="bi bi-clock" /> {rpost.readTime}</span>
-                    </div>
+
                     <h3 className="font-display font-extrabold text-sm text-white leading-snug mb-2 group-hover:text-[#6cb8e6] transition-colors line-clamp-2">{rpost.title}</h3>
                     <span className="text-xs font-bold text-[#6cb8e6] flex items-center gap-1 mt-auto group-hover:gap-2 transition-all">
                       Read Article <i className="bi bi-arrow-right" />

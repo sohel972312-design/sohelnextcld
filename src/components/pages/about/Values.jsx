@@ -45,7 +45,7 @@ const valuesData = [
 export default function Values() {
   return (
     <section className="py-16 sm:py-24" style={{ background: "#101418" }}>
-      <div className="max-w-7xl px-4 sm:px-6">
+      <div className="max-w-7xl px-4 sm:px-6 mx-auto">
         <SectionHeading
           eyebrow="My Values"
             title={

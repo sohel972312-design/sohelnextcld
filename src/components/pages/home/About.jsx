@@ -98,7 +98,7 @@ export default function About() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Link href="#contact" className="btn-p text-white font-display font-bold text-sm px-5 sm:px-6 py-3 rounded-full inline-flex items-center gap-2">
+              <Link href="/contact#contact-form" className="btn-p text-white font-display font-bold text-sm px-5 sm:px-6 py-3 rounded-full inline-flex items-center gap-2">
                 Let&apos;s Work <i className="bi bi-arrow-right" />
               </Link>
               <Link href="https://sohelmalek.com/assets/pdf/sohel-resume.pdf" target="_blank"
