@@ -103,7 +103,7 @@ export default function BlogInner({ post, related }) {
       </section>
 
       {/* ── Thumbnail ── */}
-
+ 
 
       {/* ── Content Area ── */}
       <section className="py-12 sm:py-16" style={{ background: "#111416" }}>
