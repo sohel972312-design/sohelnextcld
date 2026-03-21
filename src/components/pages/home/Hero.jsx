@@ -107,10 +107,10 @@ export default function Hero() {
             </p>
 
             <div className="animate-fade-up hero-btns flex flex-wrap gap-3 mb-8 sm:mb-10" style={{ animationDelay: ".75s" }}>
-              <Link href="#contact" className="btn-p text-white font-display font-bold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
+              <Link href="/contact" className="btn-p text-white font-display font-bold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
                 Hire Me <i className="bi bi-arrow-right" />
               </Link>
-              <Link href="#portfolio" className="btn-g text-white/80 font-display font-semibold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
+              <Link href="/#portfolio" className="btn-g text-white/80 font-display font-semibold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
                 View Work <i className="bi bi-grid-3x3-gap" />
               </Link>
               <Link href="https://sohelmalek.com/assets/pdf/sohel-resume.pdf" target="_blank"
