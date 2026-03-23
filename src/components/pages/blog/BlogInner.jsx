@@ -331,18 +331,18 @@ export default function BlogInner({ post, related }) {
                   className="group rounded-2xl overflow-hidden flex flex-col transition-all hover:-translate-y-1.5"
                   style={{ background: "#1c2128", border: "1px solid rgba(255,255,255,.06)" }}
                   data-aos="fade-up" data-aos-delay={i * 80}>
-                  <div className="h-36 flex items-center justify-center text-4xl relative" style={{ background: rpost.thumbBg }}>
-                    {rpost.emoji}
-                    <span className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full font-display"
-                      style={{ background: rpost.catBg, color: rpost.catColor }}>
-                      {rpost.category}
-                    </span>
+                  <div className="h-auto w-full flex items-center justify-center text-4xl relative" style={{ background: rpost.thumbBg }}>
+                     <img
+          src={post.bannerImage}
+          alt={post.title}
+          className="w-full h-full object-cover"
+        />
                   </div>
                   <div className="p-4 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 text-xs text-white/35 mb-2">
+                    {/* <div className="flex items-center gap-2 text-xs text-white/35 mb-2">
                       <span><i className="bi bi-clock" /> {rpost.readTime}</span>
-                    </div>
-                    <h3 className="font-display font-extrabold text-sm text-white leading-snug mb-2 group-hover:text-[#6cb8e6] transition-colors line-clamp-2">{rpost.title}</h3>
+                    </div> */}
+                    <h3 className="font-display font-extrabold text-sm text-white leading-snug mb-3 group-hover:text-[#6cb8e6] transition-colors line-clamp-2">{rpost.title}</h3>
                     <span className="text-xs font-bold text-[#6cb8e6] flex items-center gap-1 mt-auto group-hover:gap-2 transition-all">
                       Read Article <i className="bi bi-arrow-right" />
                     </span>
