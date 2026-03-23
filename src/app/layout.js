@@ -2,28 +2,49 @@ import "./globals.css";
 import TiltInit from "@/components/ui/TiltInit";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ProgressBar from '@/components/ui/ProgressBar' 
+import ProgressBar from "@/components/ui/ProgressBar";
+
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://sohelmalek.com";
 
 export const metadata = {
-  title: "Sohel Malek | Professional Web Designer & WordPress Developer in Gujarat",
+  metadataBase: new URL(baseUrl),
+
+  title:
+    "Sohel Malek | Professional Web Designer & WordPress Developer in Gujarat",
   description:
     "Expert web designer & WordPress developer crafting modern, responsive websites to grow your business online. View portfolio & services.",
+
   keywords:
     "web design, wordpress development, UI/UX design, responsive websites, Sohel Malek, website designer, web developer",
+
   authors: [{ name: "Sohel Malek" }],
+
+  // ✅ GLOBAL CANONICAL (auto applies to all pages)
+  alternates: {
+    canonical: "/", 
+  },
+
   openGraph: {
-    title: "Sohel Malek | Professional Web Designer & WordPress Developer in Gujarat",
+    title:
+      "Sohel Malek | Professional Web Designer & WordPress Developer in Gujarat",
     description:
       "Expert web designer & WordPress developer crafting modern, responsive websites to grow your business online.",
-    url: "https://sohelmalek.com",
-    images: [{ url: "https://sohelmalek.com/assets/img/Frame-48095890.webp" }],
+    url: baseUrl,
+    images: [
+      {
+        url: `${baseUrl}/assets/img/Frame-48095890.webp`,
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Sohel Malek | Professional Web Designer & WordPress Developer",
+    title:
+      "Sohel Malek | Professional Web Designer & WordPress Developer",
     description:
       "Expert web designer & WordPress developer crafting modern, responsive websites.",
-    images: ["https://sohelmalek.com/assets/img/Frame-48095890.webp"],
+    images: [`${baseUrl}/assets/img/Frame-48095890.webp`],
   },
 };
 

@@ -4,7 +4,7 @@
 // ============================================================
 "use client";
 import Link from "next/link";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { contactFaqs } from "@/data/faqs";
 import CTASection from "@/components/ui/CTASection";
 import HeroSection from "@/components/ui/HeroSection";
 import ContactDetails from "@/components/pages/contact/ContactDetails";
@@ -33,21 +33,33 @@ export default function ContactPage() {
         <div className="w93 px-4 sm:px-6">
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
 
-           <ContactDetails />
-           <ContactForm />
-          
+            <ContactDetails />
+            <ContactForm />
+
           </div>
         </div>
       </section>
-
-      <FAQs/>
-
+      <section
+        className="py-16 sm:py-24"
+        style={{
+          background:
+            "linear-gradient(180deg,#111416 0%,#0d1e2e 50%,#111416 100%)",
+        }}
+      >
+        <div className="w93 px-4 sm:px-6">
+          <FAQs
+            faqs={contactFaqs}
+            headingClass="text-center mb-10"
+          />
+        </div>
+      </section >
       {/* ── Quick Links CTA ── */}
-      <CTASection
+      < CTASection
         eyebrow="Prefer a quick chat?"
         title="I’m here to help whenever you’re ready"
         description="Send your project details via WhatsApp or email and I’ll respond quickly with a custom plan."
-        primary={{ label: "Let’s Talk", href: "/contact#contact-form" }}
+        primary={{ label: "Let’s Talk", href: "/contact#contact-form" }
+        }
         secondary={{ label: "Chat on WhatsApp", href: "https://wa.me/+919723121537" }}
       />
 

@@ -1,22 +1,27 @@
 // ============================================================
 // FILE: data/blogPosts.js
 // ============================================================
-export const blogPosts = [{
-        id: 1,
-        slug: "how-to-build-fast-wordpress-website",
-        title: "How to Build a Fast WordPress Website in 2025",
-        excerpt: "Speed is everything — a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
-        category: "WordPress",
-        catColor: "#e63946",
-        catBg: "rgba(230,57,70,.15)",
-        date: "Mar 15, 2025",
-        readTime: "8 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#1a0808,#8b1a1a)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["WordPress", "Performance", "Speed"],
-        content: `
+export const blogPosts = [
+  {
+    id: 1,
+    slug: "how-to-build-fast-wordpress-website",
+    title: "How to Build a Fast WordPress Website in 2025",
+    excerpt:
+      "Speed is everything — a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
+    category: "WordPress",
+    catColor: "#e63946",
+    metaTitle: "Fast WordPress Website Guide (2025) | Speed & Performance Tips",
+    metaDescription:
+      "Learn how to build a fast WordPress website in 2025. Improve speed, Core Web Vitals, and conversions with proven hosting, caching, and optimisation tips.",
+    catBg: "rgba(230,57,70,.15)",
+    date: "Mar 15, 2025",
+    readTime: "8 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#1a0808,#8b1a1a)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["WordPress", "Performance", "Speed"],
+    content: `
   ## Introduction
   
   A slow website is a dead website. Studies show that 53% of visitors abandon a page that takes more than 3 seconds to load. For businesses, this means lost leads, lost sales, and a poor first impression.
@@ -84,23 +89,41 @@ export const blogPosts = [{
   
   Need help making your WordPress site faster? [Contact me](/contact) and I'll audit your site for free.
       `,
-    },
-    {
-        id: 2,
-        slug: "tailwind-css-tips-for-beginners",
-        title: "10 Tailwind CSS Tips Every Beginner Should Know",
-        excerpt: "Tailwind CSS can feel overwhelming at first. These 10 practical tips will help you write cleaner, faster, and more maintainable Tailwind code from day one.",
-        category: "Tailwind CSS",
-        catColor: "#2dd4bf",
-        catBg: "rgba(45,212,191,.15)",
-        date: "Feb 28, 2025",
-        readTime: "6 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#0a1a1a,#1a5e5e)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Tailwind", "CSS", "Frontend"],
-        content: `
+      faqs: [
+  {
+    question: "How can I speed up my WordPress website?",
+    answer: "You can speed up your WordPress site by using fast hosting, enabling caching, optimizing images, minimizing CSS/JS, and using a CDN like Cloudflare."
+  },
+  {
+    question: "What is the best caching plugin for WordPress?",
+    answer: "LiteSpeed Cache is the best for LiteSpeed servers, while WP Rocket is a top premium option for other hosting environments."
+  },
+  {
+    question: "Does website speed affect SEO?",
+    answer: "Yes, website speed directly impacts SEO rankings and user experience. Faster websites rank higher and convert better."
+  }
+],
+  },
+  {
+    id: 2,
+    slug: "tailwind-css-tips-for-beginners",
+    title: "10 Tailwind CSS Tips Every Beginner Should Know",
+    excerpt:
+      "Tailwind CSS can feel overwhelming at first. These 10 practical tips will help you write cleaner, faster, and more maintainable Tailwind code from day one.",
+    category: "Tailwind CSS",
+    catColor: "#2dd4bf",
+    metaTitle: "10 Tailwind CSS Tips for Beginners (2025 Guide)",
+    metaDescription:
+      "Master Tailwind CSS with these 10 beginner-friendly tips. Write cleaner, faster, and more maintainable code with practical examples and best practices.",
+    catBg: "rgba(45,212,191,.15)",
+    date: "Feb 28, 2025",
+    readTime: "6 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#0a1a1a,#1a5e5e)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Tailwind", "CSS", "Frontend"],
+    content: `
   ## Introduction
   
   Tailwind CSS is a utility-first CSS framework that lets you build beautiful interfaces without ever leaving your HTML. But when you're starting out, the long class names can be confusing.
@@ -151,23 +174,42 @@ export const blogPosts = [{
   
   Tailwind becomes second nature after a week. The key is to stop thinking in terms of component names and start thinking in terms of design properties.
       `,
-    },
-    {
-        id: 3,
-        slug: "seo-basics-for-small-business",
-        title: "SEO Basics Every Small Business Owner Must Know",
-        excerpt: "You don't need to be an SEO expert to rank on Google. These fundamental strategies will help your small business get found by the right customers.",
-        category: "SEO",
-        catColor: "#f4c542",
-        catBg: "rgba(244,197,66,.15)",
-        date: "Feb 10, 2025",
-        readTime: "7 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#1a1500,#5e4f00)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["SEO", "Marketing", "Google"],
-        content: `
+      faqs: [
+  {
+    question: "Is Tailwind CSS good for beginners?",
+    answer: "Yes, Tailwind CSS is beginner-friendly once you understand utility classes and responsive design principles."
+  },
+  {
+    question: "What is Tailwind JIT mode?",
+    answer: "JIT (Just-In-Time) mode allows you to generate styles on demand and use arbitrary values directly in your HTML."
+  },
+  {
+    question: "How do I reduce repeated Tailwind classes?",
+    answer: "You can use @apply in CSS or create reusable components to avoid repeating long class strings."
+  }
+],
+  },
+  
+  {
+    id: 3,
+    slug: "seo-basics-for-small-business",
+    title: "SEO Basics Every Small Business Owner Must Know",
+    excerpt:
+      "You don't need to be an SEO expert to rank on Google. These fundamental strategies will help your small business get found by the right customers.",
+    category: "SEO",
+    catColor: "#f4c542",
+    metaTitle: "SEO Basics for Small Business (2025 Beginner Guide)",
+    metaDescription:
+      "Learn essential SEO strategies for small businesses. Improve rankings, get more traffic, and attract customers with simple and effective techniques.",
+    catBg: "rgba(244,197,66,.15)",
+    date: "Feb 10, 2025",
+    readTime: "7 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#1a1500,#5e4f00)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["SEO", "Marketing", "Google"],
+    content: `
   ## Introduction
   
   73% of small businesses have no SEO strategy. That means your competitors are ignoring free traffic from Google — and you can take advantage of that.
@@ -216,23 +258,41 @@ export const blogPosts = [{
   
   SEO is a long game. Start with the basics, be consistent, and you'll see results in 3–6 months. Need help? [Get an SEO audit](/contact) from me.
       `,
-    },
-    {
-        id: 4,
-        slug: "web-design-trends-2025",
-        title: "Web Design Trends to Watch in 2025",
-        excerpt: "From glassmorphism to AI-generated layouts, here are the design trends that will define the web in 2025 — and which ones you should actually use.",
-        category: "Web Design",
-        catColor: "#6cb8e6",
-        catBg: "rgba(108,184,230,.15)",
-        date: "Jan 25, 2025",
-        readTime: "5 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#0d2b45,#1a6fa8)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Design", "Trends", "UI/UX"],
-        content: `
+      faqs: [
+  {
+    question: "What is SEO and why is it important?",
+    answer: "SEO helps your website rank higher on Google, bringing free traffic and potential customers to your business."
+  },
+  {
+    question: "How long does SEO take to show results?",
+    answer: "SEO usually takes 3 to 6 months to show noticeable results depending on competition and consistency."
+  },
+  {
+    question: "What are long-tail keywords?",
+    answer: "Long-tail keywords are specific search phrases with lower competition, making them easier to rank for."
+  }
+],
+  },
+  {
+    id: 4,
+    slug: "web-design-trends-2025",
+    title: "Web Design Trends to Watch in 2025",
+    excerpt:
+      "From glassmorphism to AI-generated layouts, here are the design trends that will define the web in 2025 — and which ones you should actually use.",
+    category: "Web Design",
+    catColor: "#6cb8e6",
+    metaTitle: "Top Web Design Trends 2025 | UI/UX Modern Ideas",
+    metaDescription:
+      "Discover the latest web design trends for 2025, including glassmorphism, bento grids, and modern UI/UX practices to keep your website ahead.",
+    catBg: "rgba(108,184,230,.15)",
+    date: "Jan 25, 2025",
+    readTime: "5 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#0d2b45,#1a6fa8)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Design", "Trends", "UI/UX"],
+    content: `
   ## Introduction
   
   Web design evolves fast. What looked cutting-edge in 2022 now looks dated. Here's what's shaping the web in 2025.
@@ -267,23 +327,40 @@ export const blogPosts = [{
   
   The best design decisions are intentional ones. Adopt trends that serve your brand and your users — not just the ones that look cool.
       `,
-    },
-    {
-        id: 5,
-        slug: "woocommerce-vs-shopify",
-        title: "WooCommerce vs Shopify: Which is Right for Your Business?",
-        excerpt: "Both are excellent e-commerce platforms, but they serve very different needs. Here's an honest comparison to help you choose the right one.",
-        category: "WordPress",
-        catColor: "#e63946",
-        catBg: "rgba(230,57,70,.15)",
-        date: "Jan 12, 2025",
-        readTime: "9 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#1a0808,#5e1a00)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["WooCommerce", "Shopify", "E-Commerce"],
-        content: `
+      faqs: [
+  {
+    question: "What are the top web design trends in 2025?",
+    answer: "Top trends include dark mode, bento grids, glassmorphism, micro-interactions, and bold typography."
+  },
+  {
+    question: "Is dark mode better for websites?",
+    answer: "Dark mode improves readability in low light and enhances visual appeal when used correctly."
+  },
+  {
+    question: "Should I follow all design trends?",
+    answer: "No, only adopt trends that match your brand and improve user experience."
+  }
+],
+  },
+  {
+    id: 5,
+    slug: "woocommerce-vs-shopify",
+    title: "WooCommerce vs Shopify: Which is Right for Your Business?",
+    excerpt:
+      "Both are excellent e-commerce platforms, but they serve very different needs. Here's an honest comparison to help you choose the right one.",
+    category: "WordPress",
+    catColor: "#e63946",
+    metaTitle: "WooCommerce vs Shopify (2025) | Which is Better?",
+    metaDescription: "Compare WooCommerce vs Shopify in 2025. Learn pros, cons, pricing, and which platform is best for your eCommerce business.",
+    catBg: "rgba(230,57,70,.15)",
+    date: "Jan 12, 2025",
+    readTime: "9 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#1a0808,#5e1a00)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["WooCommerce", "Shopify", "E-Commerce"],
+    content: `
   ## Introduction
   
   One of the most common questions I get from clients: "Should I use WooCommerce or Shopify?" The honest answer is — it depends on your business.
@@ -336,23 +413,40 @@ export const blogPosts = [{
   
   Need help setting up your store? [Contact me](/contact).
       `,
-    },
-    {
-        id: 6,
-        slug: "figma-to-code-workflow",
-        title: "My Figma to Code Workflow: From Design to Live Website",
-        excerpt: "How I go from a blank Figma canvas to a pixel-perfect, fully responsive website — my complete design-to-development process explained.",
-        category: "UI/UX",
-        catColor: "#c084fc",
-        catBg: "rgba(192,132,252,.15)",
-        date: "Dec 20, 2024",
-        readTime: "10 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#1a0a2a,#4a1a6a)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Figma", "Workflow", "Design", "Development"],
-        content: `
+      faqs: [
+  {
+    question: "Which is better: WooCommerce or Shopify?",
+    answer: "WooCommerce is better for flexibility and control, while Shopify is ideal for ease of use and quick setup."
+  },
+  {
+    question: "Is WooCommerce cheaper than Shopify?",
+    answer: "Yes, WooCommerce can be cheaper long-term, but you need to manage hosting and maintenance."
+  },
+  {
+    question: "Can I switch from Shopify to WooCommerce?",
+    answer: "Yes, you can migrate your store, but it requires proper planning and data transfer."
+  }
+],
+  },
+  {
+    id: 6,
+    slug: "figma-to-code-workflow",
+    title: "My Figma to Code Workflow: From Design to Live Website",
+    excerpt:
+      "How I go from a blank Figma canvas to a pixel-perfect, fully responsive website — my complete design-to-development process explained.",
+    category: "UI/UX",
+    catColor: "#c084fc",
+    metaTitle: "Figma to Code Workflow (2025) | Design to Website Guide",
+    metaDescription: "Learn a complete Figma to code workflow. Go from design to a live responsive website using modern tools and efficient development practices.",
+    catBg: "rgba(192,132,252,.15)",
+    date: "Dec 20, 2024",
+    readTime: "10 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#1a0a2a,#4a1a6a)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Figma", "Workflow", "Design", "Development"],
+    content: `
   ## Introduction
   
   The gap between a design file and a live website used to be massive. With modern tools and a solid workflow, I can go from wireframe to deployed website in days. Here's exactly how I do it.
@@ -412,23 +506,40 @@ export const blogPosts = [{
   
   A good workflow eliminates surprises. When clients see exactly what they're getting before a single line of code is written, projects run smoothly and everyone's happy.
       `,
-    },
-    {
-        id: 7,
-        slug: "google-core-web-vitals-guide",
-        title: "Google Core Web Vitals: What They Are and How to Pass",
-        excerpt: "Core Web Vitals are Google's measure of real-world user experience. Failing them can hurt your rankings. Here's how to understand and improve each metric.",
-        category: "SEO",
-        catColor: "#f4c542",
-        catBg: "rgba(244,197,66,.15)",
-        date: "Dec 5, 2024",
-        readTime: "7 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#1a1500,#3a3000)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Core Web Vitals", "SEO", "Performance"],
-        content: `
+      faqs: [
+  {
+    question: "How do I convert Figma design to code?",
+    answer: "You convert Figma designs by building layouts using HTML, CSS, and frameworks like Next.js and Tailwind."
+  },
+  {
+    question: "What tools are used in Figma to code workflow?",
+    answer: "Common tools include Figma, Next.js, Tailwind CSS, and Framer Motion."
+  },
+  {
+    question: "Is Figma enough for web development?",
+    answer: "Figma is for design only; development requires coding and frameworks."
+  }
+],
+  },
+  {
+    id: 7,
+    slug: "google-core-web-vitals-guide",
+    title: "Google Core Web Vitals: What They Are and How to Pass",
+    excerpt:
+      "Core Web Vitals are Google's measure of real-world user experience. Failing them can hurt your rankings. Here's how to understand and improve each metric.",
+    category: "SEO",
+    catColor: "#f4c542",
+    metaTitle: "Core Web Vitals Guide (2025) | Improve SEO & Speed",
+    metaDescription: "Understand Google Core Web Vitals (LCP, INP, CLS) and learn how to improve them for better SEO rankings and user experience.",
+    catBg: "rgba(244,197,66,.15)",
+    date: "Dec 5, 2024",
+    readTime: "7 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#1a1500,#3a3000)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Core Web Vitals", "SEO", "Performance"],
+    content: `
   ## Introduction
   
   Since 2021, Google has included Core Web Vitals as a ranking signal. Sites that pass these metrics get a slight boost in rankings — and more importantly, they provide a better user experience.
@@ -479,23 +590,40 @@ export const blogPosts = [{
   
   Improving Core Web Vitals is both an SEO and UX win. Start with images (biggest impact, easiest fix) then work through JavaScript and layout stability.
       `,
-    },
-    {
-        id: 8,
-        slug: "how-to-choose-right-domain-name",
-        title: "How to Choose the Perfect Domain Name for Your Business",
-        excerpt: "Your domain name is your digital address. Choose the wrong one and it could hurt your brand and SEO for years. Here's how to choose wisely.",
-        category: "Web Design",
-        catColor: "#6cb8e6",
-        catBg: "rgba(108,184,230,.15)",
-        date: "Nov 18, 2024",
-        readTime: "4 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#051520,#0d2b45)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Domain", "Branding", "SEO"],
-        content: `
+      faqs: [
+  {
+    question: "What are Core Web Vitals?",
+    answer: "Core Web Vitals are Google metrics measuring loading speed, interactivity, and visual stability."
+  },
+  {
+    question: "What is a good LCP score?",
+    answer: "A good Largest Contentful Paint (LCP) score is under 2.5 seconds."
+  },
+  {
+    question: "How can I improve CLS?",
+    answer: "You can improve CLS by setting image dimensions and avoiding layout shifts during loading."
+  }
+],
+  },
+  {
+    id: 8,
+    slug: "how-to-choose-right-domain-name",
+    title: "How to Choose the Perfect Domain Name for Your Business",
+    excerpt:
+      "Your domain name is your digital address. Choose the wrong one and it could hurt your brand and SEO for years. Here's how to choose wisely.",
+    category: "Web Design",
+    catColor: "#6cb8e6",
+    metaTitle: "How to Choose a Domain Name (2025 Guide)",
+    metaDescription: "Choose the perfect domain name for your business. Learn branding, SEO tips, and mistakes to avoid when selecting your domain.",
+    catBg: "rgba(108,184,230,.15)",
+    date: "Nov 18, 2024",
+    readTime: "4 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#051520,#0d2b45)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Domain", "Branding", "SEO"],
+    content: `
   ## Introduction
   
   Your domain name is often the first thing people see. It appears on business cards, in emails, on social profiles, and in Google search results. Getting it right matters.
@@ -528,23 +656,40 @@ export const blogPosts = [{
   
   Spend time on your domain name. It's one of the few digital decisions that's genuinely hard to change later. Need help choosing? [Ask me](/contact).
       `,
-    },
-    {
-        id: 9,
-        slug: "responsive-design-best-practices",
-        title: "Responsive Design Best Practices for 2025",
-        excerpt: "Over 60% of web traffic is mobile. Here are the responsive design principles I follow on every project to ensure a perfect experience on every screen.",
-        category: "Web Design",
-        catColor: "#6cb8e6",
-        catBg: "rgba(108,184,230,.15)",
-        date: "Nov 2, 2024",
-        readTime: "6 min read",
-        bannerImage: "/Fram-5.webp",
-        thumbBg: "linear-gradient(135deg,#0a1530,#1a3060)",
-        author: "Sohel Malek",
-        authorAvatar: "https://i.pravatar.cc/150?u=sohel",
-        tags: ["Responsive", "Mobile", "CSS"],
-        content: `
+      faqs: [
+  {
+    question: "How do I choose a good domain name?",
+    answer: "Choose a short, brandable, and easy-to-spell domain name with a .com extension if possible."
+  },
+  {
+    question: "Does domain name affect SEO?",
+    answer: "Yes, a good domain improves branding and trust, but keywords in domains are less important today."
+  },
+  {
+    question: "Should I use keywords in my domain?",
+    answer: "It's optional. Branding is more important than exact-match keywords."
+  }
+],
+  },
+  {
+    id: 9,
+    slug: "responsive-design-best-practices",
+    title: "Responsive Design Best Practices for 2025",
+    excerpt:
+      "Over 60% of web traffic is mobile. Here are the responsive design principles I follow on every project to ensure a perfect experience on every screen.",
+    category: "Web Design",
+    catColor: "#6cb8e6",
+    metaTitle: "Responsive Design Best Practices (2025 Guide)",
+    metaDescription: "Learn responsive web design best practices for 2025. Build mobile-first, fast, and user-friendly websites that work on all devices.",
+    catBg: "rgba(108,184,230,.15)",
+    date: "Nov 2, 2024",
+    readTime: "6 min read",
+    bannerImage: "/Fram-5.webp",
+    thumbBg: "linear-gradient(135deg,#0a1530,#1a3060)",
+    author: "Sohel Malek",
+    authorAvatar: "https://i.pravatar.cc/150?u=sohel",
+    tags: ["Responsive", "Mobile", "CSS"],
+    content: `
   ## Introduction
   
   Responsive web design is no longer optional. Google uses mobile-first indexing, meaning your mobile site is what determines your rankings. And with 60%+ of all web traffic coming from mobile devices, a poor mobile experience means lost business.
@@ -587,5 +732,19 @@ export const blogPosts = [{
   
   Responsive design isn't a checklist — it's a mindset. Every design decision should be made with mobile users first, then enhanced for desktop.
       `,
-    },
+      faqs: [
+  {
+    question: "What is responsive web design?",
+    answer: "Responsive design ensures your website works well on all devices including mobile, tablet, and desktop."
+  },
+  {
+    question: "Why is mobile-first design important?",
+    answer: "Google uses mobile-first indexing, so your mobile site affects your rankings."
+  },
+  {
+    question: "What is the best way to test responsiveness?",
+    answer: "Test using real devices and browser tools like Chrome DevTools."
+  }
+],
+  },
 ];

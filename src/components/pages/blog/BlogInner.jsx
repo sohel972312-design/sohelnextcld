@@ -7,6 +7,7 @@
 import Link from "next/link";
 import CTASection from "@/components/ui/CTASection";
 import { useEffect, useState, useRef } from "react";
+import FAQs from "@/components/pages/contact/FAQs";
 export default function BlogInner({ post, related }) {
   const sidebarRef = useRef(null);
   const placeholderRef = useRef(null);
@@ -15,29 +16,29 @@ export default function BlogInner({ post, related }) {
   useEffect(() => {
     const handleScroll = () => {
       if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
-  
+
       const placeholderRect = placeholderRef.current.getBoundingClientRect();
       const relatedRect = relatedRef.current.getBoundingClientRect();
-  
+
       const HEADER_HEIGHT = 90;
       const SIDEBAR_HEIGHT = sidebarRef.current.offsetHeight;
-  
+
       // ✅ TOP → normal
       if (placeholderRect.top > HEADER_HEIGHT) {
         setIsSticky(false);
         return;
       }
-  
+
       // ✅ BOTTOM → stop before related section
       if (relatedRect.top <= HEADER_HEIGHT + SIDEBAR_HEIGHT + 20) {
         setIsSticky("top");
         return;
       }
-  
+
       // ✅ MIDDLE → fixed
       setIsSticky(true);
     };
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -108,8 +109,6 @@ export default function BlogInner({ post, related }) {
       >
         <div className="hero-grid absolute inset-0 pointer-events-none" />
         <div className="w93 px-4 sm:px-6 relative z-10 max-w-4xl mx-auto">
-
-          {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-xs text-white/40 mb-6 font-display" data-aos="fade-down">
             <Link href="/" className="hover:text-[#6cb8e6] transition-colors">Home</Link>
             <i className="bi bi-chevron-right text-[10px]" />
@@ -157,6 +156,10 @@ export default function BlogInner({ post, related }) {
               {/* <span className="flex items-center gap-1.5"><i className="bi bi-clock text-[#6cb8e6]" /> {post.readTime}</span> */}
             </div>
           </div>
+
+
+
+
         </div>
       </section>
 
@@ -173,17 +176,19 @@ export default function BlogInner({ post, related }) {
                 alt={post.title}
                 className="w-full h-full object-cover rounded-2xl"
               />
-              <MarkdownRenderer content={post.content} />
-
+              <div className="mb-12">
+                <MarkdownRenderer content={post.content} />
+              </div>
+             <FAQs faqs={post.faqs} headingClass="mb-8" />
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,.07)" }}>
+              {/* <div className="flex flex-wrap gap-2 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,.07)" }}>
                 {post.tags.map((tag) => (
                   <span key={tag} className="text-xs px-3 py-1.5 rounded-full font-mono text-white/50 transition-all hover:text-[#6cb8e6] cursor-pointer"
                     style={{ background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.08)" }}>
                     #{tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
               {/* Share */}
               <div className="mt-8 pt-8 flex flex-wrap items-center gap-3" style={{ borderTop: "1px solid rgba(255,255,255,.07)" }}>
@@ -229,26 +234,26 @@ export default function BlogInner({ post, related }) {
               <div
                 ref={sidebarRef}
                 className={`w-[260px] ${isSticky === true
-                    ? "fixed"
-                    : isSticky === "bottom"
-                      ? "absolute"
-                      : "relative"
+                  ? "fixed"
+                  : isSticky === "bottom"
+                    ? "absolute"
+                    : "relative"
                   }`}
-                  style={{
-                    position:
-                      isSticky === true
-                        ? "fixed"
-                        : isSticky === "bottom"
+                style={{
+                  position:
+                    isSticky === true
+                      ? "fixed"
+                      : isSticky === "bottom"
                         ? "absolute"
                         : "relative",
-                  
-                    top:
-                      isSticky === true
-                        ? "90px"
-                        : isSticky === "bottom"
+
+                  top:
+                    isSticky === true
+                      ? "90px"
+                      : isSticky === "bottom"
                         ? `${relatedRef.current.offsetTop - sidebarRef.current.offsetHeight - 20}px`
                         : "auto",
-                  }}
+                }}
               >
                 <div className="space-y-5">
                   {/* TOC */}
