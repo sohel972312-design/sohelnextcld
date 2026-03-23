@@ -3,7 +3,7 @@
 // ============================================================
 export const blogPosts = [{
         id: 1,
-        slug: "12how-to-build-fast-wordpress-website",
+        slug: "how-to-build-fast-wordpress-website",
         title: "How to Build a Fast WordPress Website in 2025",
         excerpt: "Speed is everything — a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
         category: "WordPress",
