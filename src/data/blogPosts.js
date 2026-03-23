@@ -5,16 +5,16 @@ export const blogPosts = [
   {
     id: 1,
     slug: "how-to-build-fast-wordpress-website",
-    title: "How to Build a Fast WordPress Website in 2025",
+    title: "How to Build a Fast WordPress Website in 2026",
     excerpt:
-      "Speed is everything — a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
+      "Speed is everything - a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
     category: "WordPress",
     catColor: "#e63946",
-    metaTitle: "Fast WordPress Website Guide (2025) | Speed & Performance Tips",
+    metaTitle: "Fast WordPress Website Guide (2026) | Speed & Performance Tips",
     metaDescription:
-      "Learn how to build a fast WordPress website in 2025. Improve speed, Core Web Vitals, and conversions with proven hosting, caching, and optimisation tips.",
+      "Learn how to build a fast WordPress website in 2026. Improve speed, Core Web Vitals, and conversions with proven hosting, caching, and optimisation tips.",
     catBg: "rgba(230,57,70,.15)",
-    date: "Mar 15, 2025",
+    date: "Mar 15, 2026",
     readTime: "8 min read",
     bannerImage: "/Fram-5.webp",
     thumbBg: "linear-gradient(135deg,#1a0808,#8b1a1a)",
@@ -32,9 +32,9 @@ export const blogPosts = [
   
   Your hosting is the foundation. A shared hosting plan with 50 other sites crammed on one server will always be slow. I recommend:
   
-  - **LiteSpeed Hosting** — servers with LiteSpeed Web Server and LSCache built in
-  - **Cloudways** — managed cloud hosting with excellent performance
-  - **SiteGround** — great for beginners, solid speed
+  - **LiteSpeed Hosting** - servers with LiteSpeed Web Server and LSCache built in
+  - **Cloudways** - managed cloud hosting with excellent performance
+  - **SiteGround** - great for beginners, solid speed
   
   For most small business clients, I use LiteSpeed-based hosting. The difference is night and day.
   
@@ -42,9 +42,9 @@ export const blogPosts = [
   
   Heavy themes with 50+ features you never use are the #1 cause of slow WordPress sites. My go-to choices:
   
-  - **Astra** — starts at 50KB, extremely fast
-  - **GeneratePress** — clean, minimal, developer-friendly
-  - **Blocksy** — modern, WooCommerce-ready
+  - **Astra** - starts at 50KB, extremely fast
+  - **GeneratePress** - clean, minimal, developer-friendly
+  - **Blocksy** - modern, WooCommerce-ready
   
   Avoid bloated themes like Avada or Divi unless absolutely necessary.
   
@@ -52,21 +52,21 @@ export const blogPosts = [
   
   Caching creates static HTML versions of your pages so PHP and MySQL don't have to run on every visit.
   
-  For LiteSpeed servers, **LiteSpeed Cache** is the best option — it's free and incredibly powerful. For other servers, **WP Rocket** is worth the investment.
+  For LiteSpeed servers, **LiteSpeed Cache** is the best option - it's free and incredibly powerful. For other servers, **WP Rocket** is worth the investment.
   
   ## 4. Optimise Your Images
   
   Images are usually the biggest files on any page. I use:
   
-  - **WebP format** — 25-35% smaller than JPEG with same quality
-  - **Lazy loading** — images only load when they enter the viewport
-  - **ShortPixel or Imagify** — auto-compress on upload
+  - **WebP format** - 25-35% smaller than JPEG with same quality
+  - **Lazy loading** - images only load when they enter the viewport
+  - **ShortPixel or Imagify** - auto-compress on upload
   
   Never upload a 4MB photo directly from your camera. Always resize first.
   
   ## 5. Minimise CSS and JavaScript
   
-  Every plugin you install adds CSS and JS to every page — even when that plugin isn't needed. Use **Asset CleanUp** or WP Rocket's script management to:
+  Every plugin you install adds CSS and JS to every page - even when that plugin isn't needed. Use **Asset CleanUp** or WP Rocket's script management to:
   
   - Load scripts only on pages that need them
   - Defer non-critical JavaScript
@@ -85,7 +85,7 @@ export const blogPosts = [
   
   ## Conclusion
   
-  Speed isn't just about user experience — it directly affects your Google rankings. A fast site ranks better, converts better, and leaves a better impression.
+  Speed isn't just about user experience - it directly affects your Google rankings. A fast site ranks better, converts better, and leaves a better impression.
   
   Need help making your WordPress site faster? [Contact me](/contact) and I'll audit your site for free.
       `,
@@ -112,11 +112,11 @@ export const blogPosts = [
       "Tailwind CSS can feel overwhelming at first. These 10 practical tips will help you write cleaner, faster, and more maintainable Tailwind code from day one.",
     category: "Tailwind CSS",
     catColor: "#2dd4bf",
-    metaTitle: "10 Tailwind CSS Tips for Beginners (2025 Guide)",
+    metaTitle: "10 Tailwind CSS Tips for Beginners (2026 Guide)",
     metaDescription:
       "Master Tailwind CSS with these 10 beginner-friendly tips. Write cleaner, faster, and more maintainable code with practical examples and best practices.",
     catBg: "rgba(45,212,191,.15)",
-    date: "Feb 28, 2025",
+    date: "Feb 28, 2026",
     readTime: "6 min read",
     bannerImage: "/Fram-5.webp",
     thumbBg: "linear-gradient(135deg,#0a1a1a,#1a5e5e)",
@@ -198,11 +198,11 @@ export const blogPosts = [
       "You don't need to be an SEO expert to rank on Google. These fundamental strategies will help your small business get found by the right customers.",
     category: "SEO",
     catColor: "#f4c542",
-    metaTitle: "SEO Basics for Small Business (2025 Beginner Guide)",
+    metaTitle: "SEO Basics for Small Business (2026 Beginner Guide)",
     metaDescription:
       "Learn essential SEO strategies for small businesses. Improve rankings, get more traffic, and attract customers with simple and effective techniques.",
     catBg: "rgba(244,197,66,.15)",
-    date: "Feb 10, 2025",
+    date: "Feb 10, 2026",
     readTime: "7 min read",
     bannerImage: "/Fram-5.webp",
     thumbBg: "linear-gradient(135deg,#1a1500,#5e4f00)",
@@ -212,17 +212,17 @@ export const blogPosts = [
     content: `
   ## Introduction
   
-  73% of small businesses have no SEO strategy. That means your competitors are ignoring free traffic from Google — and you can take advantage of that.
+  73% of small businesses have no SEO strategy. That means your competitors are ignoring free traffic from Google - and you can take advantage of that.
   
-  SEO doesn't have to be complicated. Here's what actually matters for small businesses in 2025.
+  SEO doesn't have to be complicated. Here's what actually matters for small businesses in 2026.
   
   ## 1. Start with Keyword Research
   
   Before anything else, find out what your customers are actually searching for. Use free tools like:
   
-  - **Google Search Console** — see what you already rank for
-  - **Google Keyword Planner** — find search volumes
-  - **Ubersuggest** — competitor keyword analysis
+  - **Google Search Console** - see what you already rank for
+  - **Google Keyword Planner** - find search volumes
+  - **Ubersuggest** - competitor keyword analysis
   
   Target long-tail keywords first. "Web designer Ahmedabad" is easier to rank for than "web designer."
   
@@ -230,7 +230,7 @@ export const blogPosts = [
   
   Every page needs a unique, keyword-rich title tag (under 60 characters) and meta description (under 160 characters).
   
-  Example: "Web Designer in Ahmedabad | Sohel Malek — Custom Websites"
+  Example: "Web Designer in Ahmedabad | Sohel Malek - Custom Websites"
   
   ## 3. Create Helpful Content
   
@@ -244,7 +244,7 @@ export const blogPosts = [
   
   ## 4. Get Listed in Local Directories
   
-  For local businesses, claim your **Google Business Profile**. Fill it completely — photos, hours, services, and collect reviews. This is free and incredibly powerful for local searches.
+  For local businesses, claim your **Google Business Profile**. Fill it completely - photos, hours, services, and collect reviews. This is free and incredibly powerful for local searches.
   
   ## 5. Build Backlinks Naturally
   
@@ -275,17 +275,17 @@ export const blogPosts = [
   },
   {
     id: 4,
-    slug: "web-design-trends-2025",
-    title: "Web Design Trends to Watch in 2025",
+    slug: "web-design-trends-2026",
+    title: "Web Design Trends to Watch in 2026",
     excerpt:
-      "From glassmorphism to AI-generated layouts, here are the design trends that will define the web in 2025 — and which ones you should actually use.",
+      "From glassmorphism to AI-generated layouts, here are the design trends that will define the web in 2026 - and which ones you should actually use.",
     category: "Web Design",
     catColor: "#6cb8e6",
-    metaTitle: "Top Web Design Trends 2025 | UI/UX Modern Ideas",
+    metaTitle: "Top Web Design Trends 2026 | UI/UX Modern Ideas",
     metaDescription:
-      "Discover the latest web design trends for 2025, including glassmorphism, bento grids, and modern UI/UX practices to keep your website ahead.",
+      "Discover the latest web design trends for 2026, including glassmorphism, bento grids, and modern UI/UX practices to keep your website ahead.",
     catBg: "rgba(108,184,230,.15)",
-    date: "Jan 25, 2025",
+    date: "Jan 25, 2026",
     readTime: "5 min read",
     bannerImage: "/Fram-5.webp",
     thumbBg: "linear-gradient(135deg,#0d2b45,#1a6fa8)",
@@ -295,11 +295,11 @@ export const blogPosts = [
     content: `
   ## Introduction
   
-  Web design evolves fast. What looked cutting-edge in 2022 now looks dated. Here's what's shaping the web in 2025.
+  Web design evolves fast. What looked cutting-edge in 2022 now looks dated. Here's what's shaping the web in 2026.
   
   ## 1. Dark Mode as Default
   
-  More sites are launching with dark mode as the primary design choice — not just an option. Users spend less time squinting, and dark backgrounds make colourful UI elements pop.
+  More sites are launching with dark mode as the primary design choice - not just an option. Users spend less time squinting, and dark backgrounds make colourful UI elements pop.
   
   ## 2. Bento Grid Layouts
   
@@ -311,7 +311,7 @@ export const blogPosts = [
   
   ## 4. Micro-Interactions Everywhere
   
-  Small animations — a button that bounces, a card that tilts, a count that ticks up — make interfaces feel alive. Users notice these details even when they don't consciously register them.
+  Small animations - a button that bounces, a card that tilts, a count that ticks up - make interfaces feel alive. Users notice these details even when they don't consciously register them.
   
   ## 5. Typography as the Hero
   
@@ -319,17 +319,17 @@ export const blogPosts = [
   
   ## What to Avoid
   
-  - **Overusing animations** — every element shouldn't move
-  - **Trend stacking** — picking every trend at once
-  - **Ignoring performance** — beautiful but slow is useless
+  - **Overusing animations** - every element shouldn't move
+  - **Trend stacking** - picking every trend at once
+  - **Ignoring performance** - beautiful but slow is useless
   
   ## Conclusion
   
-  The best design decisions are intentional ones. Adopt trends that serve your brand and your users — not just the ones that look cool.
+  The best design decisions are intentional ones. Adopt trends that serve your brand and your users - not just the ones that look cool.
       `,
       faqs: [
   {
-    question: "What are the top web design trends in 2025?",
+    question: "What are the top web design trends in 2026?",
     answer: "Top trends include dark mode, bento grids, glassmorphism, micro-interactions, and bold typography."
   },
   {
@@ -350,10 +350,10 @@ export const blogPosts = [
       "Both are excellent e-commerce platforms, but they serve very different needs. Here's an honest comparison to help you choose the right one.",
     category: "WordPress",
     catColor: "#e63946",
-    metaTitle: "WooCommerce vs Shopify (2025) | Which is Better?",
-    metaDescription: "Compare WooCommerce vs Shopify in 2025. Learn pros, cons, pricing, and which platform is best for your eCommerce business.",
+    metaTitle: "WooCommerce vs Shopify (2026) | Which is Better?",
+    metaDescription: "Compare WooCommerce vs Shopify in 2026. Learn pros, cons, pricing, and which platform is best for your eCommerce business.",
     catBg: "rgba(230,57,70,.15)",
-    date: "Jan 12, 2025",
+    date: "Jan 12, 2026",
     readTime: "9 min read",
     bannerImage: "/Fram-5.webp",
     thumbBg: "linear-gradient(135deg,#1a0808,#5e1a00)",
@@ -363,7 +363,7 @@ export const blogPosts = [
     content: `
   ## Introduction
   
-  One of the most common questions I get from clients: "Should I use WooCommerce or Shopify?" The honest answer is — it depends on your business.
+  One of the most common questions I get from clients: "Should I use WooCommerce or Shopify?" The honest answer is - it depends on your business.
   
   Let me break down the key differences.
   
@@ -409,7 +409,7 @@ export const blogPosts = [
   - **Choose WooCommerce** if you want control, have a WordPress site already, or need heavy customisation.
   - **Choose Shopify** if you want to focus entirely on selling and don't want to think about tech.
   
-  For most of my Indian clients, I recommend WooCommerce — the control and lower ongoing costs make more sense long-term.
+  For most of my Indian clients, I recommend WooCommerce - the control and lower ongoing costs make more sense long-term.
   
   Need help setting up your store? [Contact me](/contact).
       `,
@@ -433,10 +433,10 @@ export const blogPosts = [
     slug: "figma-to-code-workflow",
     title: "My Figma to Code Workflow: From Design to Live Website",
     excerpt:
-      "How I go from a blank Figma canvas to a pixel-perfect, fully responsive website — my complete design-to-development process explained.",
+      "How I go from a blank Figma canvas to a pixel-perfect, fully responsive website - my complete design-to-development process explained.",
     category: "UI/UX",
     catColor: "#c084fc",
-    metaTitle: "Figma to Code Workflow (2025) | Design to Website Guide",
+    metaTitle: "Figma to Code Workflow (2026) | Design to Website Guide",
     metaDescription: "Learn a complete Figma to code workflow. Go from design to a live responsive website using modern tools and efficient development practices.",
     catBg: "rgba(192,132,252,.15)",
     date: "Dec 20, 2024",
@@ -463,17 +463,17 @@ export const blogPosts = [
   
   ## Step 2: Wireframes in Figma
   
-  I start with low-fidelity wireframes — just boxes and lines representing layout and hierarchy. No colours, no real content. This stage is about structure, not beauty.
+  I start with low-fidelity wireframes - just boxes and lines representing layout and hierarchy. No colours, no real content. This stage is about structure, not beauty.
   
   I share these with the client early. Changing a wireframe takes 5 minutes. Changing a fully designed page takes 2 hours.
   
   ## Step 3: Design System First
   
   Before designing any page, I set up:
-  - **Colour palette** — primary, secondary, neutral, semantic colours
-  - **Typography scale** — heading sizes, body text, labels
-  - **Spacing scale** — consistent spacing units (4px, 8px, 16px, 24px...)
-  - **Component library** — buttons, cards, inputs, badges
+  - **Colour palette** - primary, secondary, neutral, semantic colours
+  - **Typography scale** - heading sizes, body text, labels
+  - **Spacing scale** - consistent spacing units (4px, 8px, 16px, 24px...)
+  - **Component library** - buttons, cards, inputs, badges
   
   This means every element is consistent and reusable.
   
@@ -529,7 +529,7 @@ export const blogPosts = [
       "Core Web Vitals are Google's measure of real-world user experience. Failing them can hurt your rankings. Here's how to understand and improve each metric.",
     category: "SEO",
     catColor: "#f4c542",
-    metaTitle: "Core Web Vitals Guide (2025) | Improve SEO & Speed",
+    metaTitle: "Core Web Vitals Guide (2026) | Improve SEO & Speed",
     metaDescription: "Understand Google Core Web Vitals (LCP, INP, CLS) and learn how to improve them for better SEO rankings and user experience.",
     catBg: "rgba(244,197,66,.15)",
     date: "Dec 5, 2024",
@@ -542,11 +542,11 @@ export const blogPosts = [
     content: `
   ## Introduction
   
-  Since 2021, Google has included Core Web Vitals as a ranking signal. Sites that pass these metrics get a slight boost in rankings — and more importantly, they provide a better user experience.
+  Since 2021, Google has included Core Web Vitals as a ranking signal. Sites that pass these metrics get a slight boost in rankings - and more importantly, they provide a better user experience.
   
   Here's a plain-English explanation of each metric.
   
-  ## LCP — Largest Contentful Paint
+  ## LCP - Largest Contentful Paint
   
   **What it measures:** How long it takes for the largest visible element (usually a hero image or heading) to load.
   
@@ -558,7 +558,7 @@ export const blogPosts = [
   - Preload critical images
   - Use fast hosting
   
-  ## FID / INP — Interaction to Next Paint
+  ## FID / INP - Interaction to Next Paint
   
   **What it measures:** How quickly the page responds to a user's first interaction (click, tap, keypress).
   
@@ -569,7 +569,7 @@ export const blogPosts = [
   - Break up long tasks
   - Defer non-critical scripts
   
-  ## CLS — Cumulative Layout Shift
+  ## CLS - Cumulative Layout Shift
   
   **What it measures:** How much page elements unexpectedly move as the page loads (you know when you go to click a button and it moves? That's CLS).
   
@@ -583,7 +583,7 @@ export const blogPosts = [
   ## How to Check Your Scores
   
   1. **Google Search Console** → Core Web Vitals report
-  2. **PageSpeed Insights** — pagespeed.web.dev
+  2. **PageSpeed Insights** - pagespeed.web.dev
   3. **Chrome DevTools** → Lighthouse tab
   
   ## Conclusion
@@ -613,7 +613,7 @@ export const blogPosts = [
       "Your domain name is your digital address. Choose the wrong one and it could hurt your brand and SEO for years. Here's how to choose wisely.",
     category: "Web Design",
     catColor: "#6cb8e6",
-    metaTitle: "How to Choose a Domain Name (2025 Guide)",
+    metaTitle: "How to Choose a Domain Name (2026 Guide)",
     metaDescription: "Choose the perfect domain name for your business. Learn branding, SEO tips, and mistakes to avoid when selecting your domain.",
     catBg: "rgba(108,184,230,.15)",
     date: "Nov 18, 2024",
@@ -646,9 +646,9 @@ export const blogPosts = [
   
   ## Where to Check and Buy
   
-  - **GoDaddy** — large inventory, frequent discounts
-  - **Namecheap** — competitive pricing, good interface
-  - **Google Domains** — simple, transparent pricing
+  - **GoDaddy** - large inventory, frequent discounts
+  - **Namecheap** - competitive pricing, good interface
+  - **Google Domains** - simple, transparent pricing
   
   Always register through a reputable registrar and keep auto-renewal on.
   
@@ -674,13 +674,13 @@ export const blogPosts = [
   {
     id: 9,
     slug: "responsive-design-best-practices",
-    title: "Responsive Design Best Practices for 2025",
+    title: "Responsive Design Best Practices for 2026",
     excerpt:
       "Over 60% of web traffic is mobile. Here are the responsive design principles I follow on every project to ensure a perfect experience on every screen.",
     category: "Web Design",
     catColor: "#6cb8e6",
-    metaTitle: "Responsive Design Best Practices (2025 Guide)",
-    metaDescription: "Learn responsive web design best practices for 2025. Build mobile-first, fast, and user-friendly websites that work on all devices.",
+    metaTitle: "Responsive Design Best Practices (2026 Guide)",
+    metaDescription: "Learn responsive web design best practices for 2026. Build mobile-first, fast, and user-friendly websites that work on all devices.",
     catBg: "rgba(108,184,230,.15)",
     date: "Nov 2, 2024",
     readTime: "6 min read",
@@ -718,7 +718,7 @@ export const blogPosts = [
   
   ## 4. Touch-Friendly Targets
   
-  Buttons and links should be at least 44×44px — Google's recommended minimum. Nothing is more frustrating than tapping a tiny link on mobile.
+  Buttons and links should be at least 44×44px - Google's recommended minimum. Nothing is more frustrating than tapping a tiny link on mobile.
   
   ## 5. Test on Real Devices
   
@@ -730,7 +730,7 @@ export const blogPosts = [
   
   ## Conclusion
   
-  Responsive design isn't a checklist — it's a mindset. Every design decision should be made with mobile users first, then enhanced for desktop.
+  Responsive design isn't a checklist - it's a mindset. Every design decision should be made with mobile users first, then enhanced for desktop.
       `,
       faqs: [
   {
