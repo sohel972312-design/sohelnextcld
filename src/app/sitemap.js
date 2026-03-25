@@ -12,7 +12,7 @@ const supabase = createClient(
 export default async function sitemap() {
 
   const { data: posts } = await supabase
-    .from("blogs")
+    .from("blog_posts")
     .select("slug, created_at");
 
   const blogPages = posts.map((post) => ({
