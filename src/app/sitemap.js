@@ -9,33 +9,31 @@ const supabase = createClient(
 
 export default async function sitemap() {
 
-  const { data: posts, error } = await supabase
-    .from("blog_posts")
-    .select("slug, created_at");
-
-  if (error || !posts) {
-    console.error("Supabase sitemap error:", error);
-    return [
-      {
-        url: BASE_URL,
-        lastModified: new Date(),
-      }
-    ];
-  }
-
-  const blogPages = posts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.created_at),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  return [
+  // Static pages
+  const staticPages = [
     {
-      url: BASE_URL,
+      url: `${BASE_URL}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${BASE_URL}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/projects`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/blog`,
@@ -43,6 +41,25 @@ export default async function sitemap() {
       changeFrequency: "daily",
       priority: 0.8,
     },
-    ...blogPages,
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
+
+  // Fetch posts from Supabase
+  const { data: posts } = await supabase
+    .from("blog_posts") // ← correct table name
+    .select("slug, created_at");
+
+  const blogPages = posts?.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.created_at),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  })) || [];
+
+  return [...staticPages, ...blogPages];
 }
