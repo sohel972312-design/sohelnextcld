@@ -5,6 +5,7 @@ import HeroSection from "@/components/ui/HeroSection";
 import CTASection from "@/components/ui/CTASection";
 import BlogGrid from "@/components/pages/blog/BlogGrid";
 import BlogTicker from "@/components/pages/blog/BlogTicker";
+ 
 
 export const metadata = {
   title: "Blog — Sohel Malek",
@@ -13,7 +14,7 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <>
+    <> 
       <HeroSection
         eyebrow="Blog"
         title={<>Tips, Tutorials &amp; <span className="grad-text">Insights</span></>}

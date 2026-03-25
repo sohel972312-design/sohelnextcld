@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 
-import { supabase } from "@/lib/supabase";
+// import { supabase } from "@/lib/supabase";
 export default function BlogInner() {
 
 
@@ -103,15 +103,24 @@ const router = useRouter();
     fetchBlog();
   }, [slug]);
   // ── Fetch blog from DB ──
-  useEffect(() => {
-    if (!slug) return;
+useEffect(() => {
+  if (!slug) return;
 
-    const fetchBlog = async () => {
+  const fetchBlog = async () => {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-      // Fetch categories
-      const { data: categoryData } = await supabase
-        .from("blog_posts")
-        .select("category");
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const { data: categoryData } = await supabase
+      .from("blog_posts")
+      .select("category");
+
+    if (categoryData) {
+      const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
+      setCategories(uniqueCategories);
+    }
 
       if (categoryData) {
         const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
