@@ -5,7 +5,7 @@ import HeroSection from "@/components/ui/HeroSection";
 import CTASection from "@/components/ui/CTASection";
 import BlogGrid from "@/components/pages/blog/BlogGrid";
 import BlogTicker from "@/components/pages/blog/BlogTicker";
- 
+ import { Suspense } from "react";
 
 export const metadata = {
   title: "Blog — Sohel Malek",
@@ -27,8 +27,9 @@ export default function BlogPage() {
 
       <BlogTicker />
 
+       <Suspense fallback={<div>Loading...</div>}>
       <BlogGrid />
-
+    </Suspense>
       <CTASection
         eyebrow="Ready to grow online?"
         title={<>Let&apos;s build something <span className="grad-text">amazing</span> together</>}
