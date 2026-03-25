@@ -1,16 +1,28 @@
-// ============================================================
-// FILE: src/app/sitemap.js
-// Place this file at: src/app/sitemap.js
-// Next.js will auto-serve it at: https://sohelmalek.com/sitemap.xml
-// ============================================================
+// src/app/sitemap.js
 
-import { blogPosts } from "@/data/blogPosts";
+import { createClient } from "@supabase/supabase-js";
 
 const BASE_URL = "https://sohelmalek.com";
 
-export default function sitemap() {
-  // ── Static Pages ──
-  const staticPages = [
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
+
+export default async function sitemap() {
+
+  const { data: posts } = await supabase
+    .from("blogs")
+    .select("slug, created_at");
+
+  const blogPages = posts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.created_at),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [
     {
       url: BASE_URL,
       lastModified: new Date(),
@@ -18,44 +30,11 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    ...blogPages,
   ];
-
-  // ── Dynamic Blog Post Pages ──
-  const blogPages = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...blogPages];
 }
