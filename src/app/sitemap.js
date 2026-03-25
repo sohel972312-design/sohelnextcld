@@ -50,16 +50,14 @@ export default async function sitemap() {
   ];
 
   // Fetch posts from Supabase
-  const { data: posts } = await supabase
-    .from("blog_posts") // ← correct table name
-    .select("slug, created_at");
+const { data: posts, error } = await supabase
+  .from("blog_posts")
+  .select("slug, created_at");
 
-  const blogPages = posts?.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.created_at),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  })) || [];
+const blogPages = posts?.map((post) => ({
+  url: `${BASE_URL}/blog/${post.slug}`,
+  lastModified: new Date(post.created_at),
+})) || [];
 
   return [...staticPages, ...blogPages];
 }
