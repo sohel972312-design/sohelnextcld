@@ -6,7 +6,7 @@ import CTASection from "@/components/ui/CTASection";
 import BlogGrid from "@/components/pages/blog/BlogGrid";
 import BlogTicker from "@/components/pages/blog/BlogTicker";
  import { Suspense } from "react";
-
+ 
 export const metadata = {
   title: "Blog — Sohel Malek",
   description: "Web design, WordPress, SEO tips and tutorials by Sohel Malek.",
