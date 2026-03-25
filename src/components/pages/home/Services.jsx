@@ -48,7 +48,7 @@ export default function Services() {
           description="Delivering excellence through hands-on expertise — high-quality digital solutions."
           data-aos="fade-up"
           className="mb-6 text-center"
-          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl  tracking-tight text-white leading-tight mb-5"
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {servicesData.map((s, i) => (

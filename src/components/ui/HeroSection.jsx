@@ -32,14 +32,14 @@ export default function HeroSection({
           title={title}
           subtitle={subtitle}
           className={headingClassName}
-          titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+          titleClassName="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight text-white leading-tight mb-5"
         />
         <div className="flex flex-wrap justify-center gap-3" data-aos="fade-up" data-aos-delay="100">
-          <Link href={primaryHref} className="btn-p text-white font-display font-bold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2">
+          <Link href={primaryHref} className="btn-p text-white font-syne font-bold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2">
             {primaryLabel} <i className="bi bi-arrow-right" />
           </Link>
           <Link href={secondaryHref} target="_blank"
-            className="btn-g text-white/80 font-display font-semibold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2"
+            className="btn-g text-white/80 font-syne font-semibold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2"
             style={{ borderColor: "rgba(255,255,255,.3)" }}>
             <i className="bi bi-whatsapp text-green-400" /> {secondaryLabel}
           </Link>

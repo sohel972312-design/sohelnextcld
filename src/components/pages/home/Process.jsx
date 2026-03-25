@@ -50,7 +50,7 @@ export default function Process() {
                   description="A clear, structured workflow from concept to launch — every time."
                   data-aos="fade-up"
                   className="mb-6 text-center"
-                  titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+                  titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl tracking-tight text-white leading-tight mb-5"
                 />
         
         <div className="grid sm:grid-cols-3 gap-4 sm:gap-6" data-aos="fade-up" data-aos-delay="80">

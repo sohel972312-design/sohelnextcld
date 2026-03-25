@@ -1,57 +1,24 @@
 
-
+"use client";
 // ============================================================
 // FILE: components/pages/blog/BlogInner.jsx
 // ============================================================
-"use client";
 import Link from "next/link";
-import CTASection from "@/components/ui/CTASection";
 import { useEffect, useState, useRef } from "react";
+import CTASection from "@/components/ui/CTASection";
 import FAQs from "@/components/pages/contact/FAQs";
-export default function BlogInner({ post, related }) {
-  const sidebarRef = useRef(null);
-  const placeholderRef = useRef(null);
-  const [isSticky, setIsSticky] = useState(false);
-  const relatedRef = useRef(null);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
-
-      const placeholderRect = placeholderRef.current.getBoundingClientRect();
-      const relatedRect = relatedRef.current.getBoundingClientRect();
-
-      const HEADER_HEIGHT = 90;
-      const SIDEBAR_HEIGHT = sidebarRef.current.offsetHeight;
-
-      // ✅ TOP → normal
-      if (placeholderRect.top > HEADER_HEIGHT) {
-        setIsSticky(false);
-        return;
-      }
-
-      // ✅ BOTTOM → stop before related section
-      if (relatedRect.top <= HEADER_HEIGHT + SIDEBAR_HEIGHT + 20) {
-        setIsSticky("top");
-        return;
-      }
-
-      // ✅ MIDDLE → fixed
-      setIsSticky(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
-
-
-
+import { supabase } from "@/lib/supabase";
+export default function BlogInner() {
 
 
   const [progress, setProgress] = useState(0);
   const [tocOpen, setTocOpen] = useState(false);
-
+  const [recentPosts, setRecentPosts] = useState([]);
+const router = useRouter();
   // Reading progress bar
   useEffect(() => {
     const handleScroll = () => {
@@ -83,6 +50,143 @@ export default function BlogInner({ post, related }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
+  const { slug } = useParams(); // get slug from URL
+  const [post, setPost] = useState(null);
+  const [related, setRelated] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const sidebarRef = useRef(null);
+  const placeholderRef = useRef(null);
+  const relatedRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    if (!slug) return;
+
+    const fetchBlog = async () => {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      const { createClient } = await import("@supabase/supabase-js");
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      // Fetch recent posts (exclude current)
+      const { data: recentData } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .neq("slug", slug)      // current blog exclude
+        .order("created_at", { ascending: false }) // latest first
+        .limit(5);
+
+      setRecentPosts(recentData || []);
+      const { data } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      setPost(data);
+
+      // categories fetch
+      const { data: categoryData } = await supabase
+        .from("blog_posts")
+        .select("category");
+
+      if (categoryData) {
+        const unique = [...new Set(categoryData.map((c) => c.category))];
+        setCategories(unique);
+      }
+
+      setLoading(false);
+    };
+
+    fetchBlog();
+  }, [slug]);
+  // ── Fetch blog from DB ──
+  useEffect(() => {
+    if (!slug) return;
+
+    const fetchBlog = async () => {
+
+      // Fetch categories
+      const { data: categoryData } = await supabase
+        .from("blog_posts")
+        .select("category");
+
+      if (categoryData) {
+        const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
+        setCategories(uniqueCategories);
+      }
+
+
+
+      try {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        const { createClient } = await import("@supabase/supabase-js");
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        // Fetch post by slug
+        const { data, error } = await supabase
+          .from("blog_posts")
+          .select("*")
+          .eq("slug", slug)
+          .single();
+
+        if (error || !data) {
+          setPost(null);
+          setLoading(false);
+          console.warn("Blog not found for slug:", slug, error);
+          return;
+        }
+
+        setPost(data);
+
+        // Fetch related posts (same category, exclude current)
+        const { data: relatedData } = await supabase
+          .from("blog_posts")
+          .select("*")
+          .eq("category", data.category)
+          .neq("slug", slug)
+          .limit(3);
+
+        setRelated(relatedData || []);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setLoading(false);
+      }
+    };
+
+    fetchBlog();
+  }, [slug]);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
+
+      const HEADER_HEIGHT = 90;
+      const SIDEBAR_HEIGHT = sidebarRef.current.offsetHeight;
+
+      const placeholderTop = placeholderRef.current.getBoundingClientRect().top;
+      const relatedTop = relatedRef.current.getBoundingClientRect().top;
+
+      if (placeholderTop > HEADER_HEIGHT) setIsSticky(false);
+      else if (relatedTop <= HEADER_HEIGHT + SIDEBAR_HEIGHT + 20) setIsSticky("bottom");
+      else setIsSticky(true);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (loading) return <div className="text-center py-20 text-white">Loading blog...</div>;
+  if (!post) return <div className="text-center py-20 text-white">Blog not found</div>;
+
+
+
+
+
+
   // Parse headings for TOC
   const headings = [];
   const headingRegex = /^##\s+(.+)$/gm;
@@ -109,7 +213,7 @@ export default function BlogInner({ post, related }) {
       >
         <div className="hero-grid absolute inset-0 pointer-events-none" />
         <div className="w93 px-4 sm:px-6 relative z-10 max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 text-xs text-white/40 mb-6 font-display" data-aos="fade-down">
+          <div className="flex items-center justify-center gap-2 text-xs text-white/40 mb-6 font-display" data-aos="fade-down">
             <Link href="/" className="hover:text-[#6cb8e6] transition-colors">Home</Link>
             <i className="bi bi-chevron-right text-[10px]" />
             <Link href="/blog" className="hover:text-[#6cb8e6] transition-colors">Blog</Link>
@@ -118,31 +222,31 @@ export default function BlogInner({ post, related }) {
           </div>
 
           {/* Category */}
-          <div className="mb-4" data-aos="fade-up">
+          <div className="mb-4 text-center" data-aos="fade-up">
             <span className="text-xs font-bold px-3 py-1.5 rounded-full font-display"
-              style={{ background: post.catBg, color: post.catColor, border: `1px solid ${post.catColor}33` }}>
+              style={{ background: post.catbg, color: post.catcolor, border: `1px solid ${post.catcolor}33` }}>
               {post.category}
             </span>
           </div>
 
           {/* Title */}
           <h1
-            className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-5"
+            className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-center text-white leading-tight mb-5"
             data-aos="fade-up" data-aos-delay="80"
           >
             {post.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="120">
+          <p className="text-white/60 m-auto text-base sm:text-lg leading-relaxed text-center mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="120">
             {post.excerpt}
           </p>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6" data-aos="fade-up" data-aos-delay="160">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6" data-aos="fade-up" data-aos-delay="160">
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={post.authorAvatar} alt={post.author}
+              <img src={post.authoravatar} alt={post.author}
                 className="w-10 h-10 rounded-full object-cover"
                 style={{ border: "2px solid rgba(108,184,230,.3)" }} />
               <div>
@@ -165,21 +269,25 @@ export default function BlogInner({ post, related }) {
 
 
       {/* ── Content Area ── */}
-      <section className="py-12 sm:py-16" style={{ background: "#111416" }} id="related-section">
-        <div className="w93 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr_260px] gap-10 lg:gap-12 items-start">
+      <section className="py-12 sm:py-16 " style={{ background: "#111416" }} id="related-section">
+        <div className="w93 px-4 sm:px-6 relative z-10 ">
+          <div className="grid grid-cols-12 gap-10 lg:gap-12 items-start">
 
             {/* Article */}
-            <article id="article-body">
+            <article id="article-body" className=" col-span-12 lg:col-span-8">
               <img
-                src={post.bannerImage}
+                src={post.bannerimage}
                 alt={post.title}
-                className="w-full h-full object-cover rounded-2xl"
+                className="w-full h-full object-cover rounded-2xl mb-6"
               />
               <div className="mb-12">
-                <MarkdownRenderer content={post.content} />
+
+                <div
+                  className="prose prose-invert max-w-none"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
               </div>
-             <FAQs faqs={post.faqs} headingClass="mb-8" />
+              <FAQs faqs={post.faqs} headingClass="mb-8" />
               {/* Tags */}
               {/* <div className="flex flex-wrap gap-2 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,.07)" }}>
                 {post.tags.map((tag) => (
@@ -210,7 +318,7 @@ export default function BlogInner({ post, related }) {
               <div className="mt-10 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row gap-4 sm:gap-5 items-start"
                 style={{ background: "linear-gradient(135deg,rgba(26,111,168,.12),rgba(13,43,69,.4))", border: "1px solid rgba(108,184,230,.15)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={post.authorAvatar} alt={post.author}
+                <img src={post.authoravatar} alt={post.author}
                   className="w-14 h-14 rounded-2xl object-cover shrink-0"
                   style={{ border: "2px solid rgba(108,184,230,.25)" }} />
                 <div>
@@ -228,12 +336,12 @@ export default function BlogInner({ post, related }) {
             </article>
 
             {/* Sidebar */}
-            <aside className="hidden lg:block relative">
+            <aside className="hidden lg:block relative col-span-12 lg:col-span-4">
               <div ref={placeholderRef} />
 
               <div
                 ref={sidebarRef}
-                className={`w-[260px] ${isSticky === true
+                className={`w-full ${isSticky === true
                   ? "fixed"
                   : isSticky === "bottom"
                     ? "absolute"
@@ -255,33 +363,61 @@ export default function BlogInner({ post, related }) {
                         : "auto",
                 }}
               >
+
                 <div className="space-y-5">
                   {/* TOC */}
-                  {headings.length > 0 && (
-                    <div className="rounded-2xl p-5 mb-5"
-                      style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                      <div className="font-display font-extrabold text-sm text-white mb-4 flex items-center gap-2">
-                        <i className="bi bi-list-ul text-[#6cb8e6]" /> Table of Contents
+                 {categories.length > 0 && (
+  <div className="rounded-2xl p-5 mb-5"
+       style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
+    <div className="font-display font-bold text-lg text-white mb-4">Categories</div>
+
+    <ul className="space-y-2">
+      {categories.map((cat) => (
+        <li key={cat}>
+          <button
+            onClick={() => router.push(`/blog?category=${encodeURIComponent(cat)}`)}
+            className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2"
+          >
+            <span className="text-[#6cb8e6]">›</span>
+            {cat}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+                  {recentPosts.length > 0 && (
+                    <div
+                      className="rounded-2xl p-5 mb-5"
+                      style={{
+                        background: "rgba(255,255,255,.03)",
+                        border: "1px solid rgba(108,184,230,.12)",
+                      }}
+                    >
+                      <div className="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
+                        <i className="bi bi-clock-history text-[#6cb8e6]" /> Recent Blogs
                       </div>
+
                       <ul className="space-y-2">
-                        {headings.map((h) => (
-                          <li key={h.id}>
-                            <a href={`#${h.id}`}
-                              className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2">
-                              <span className="text-[#6cb8e6] mt-0.5">›</span>
-                              {h.text}
-                            </a>
+                        {recentPosts.map((rpost) => (
+                          <li key={rpost.slug}>
+                            <Link style={{
+                              borderBottom: "1px solid rgba(108,184,230,.12)",
+                            }}
+                              href={`/blog/${rpost.slug}`}
+                              className="text-xs text-white/50 border-b pb-2 hover:text-[#6cb8e6] transition-colors leading-relaxed block"
+                            >
+                              {rpost.title}
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
-
                   {/* About Author Sidebar */}
-                  <div className="rounded-2xl p-5 mb-5 text-center"
+                  {/* <div className="rounded-2xl p-5 mb-5 text-center"
                     style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={post.authorAvatar} alt={post.author}
+                     <img src={post.authoravatar} alt={post.author}
                       className="w-14 h-14 rounded-2xl object-cover mx-auto mb-3"
                       style={{ border: "2px solid rgba(108,184,230,.25)" }} />
                     <div className="font-display font-extrabold text-sm text-white mb-0.5">{post.author}</div>
@@ -290,12 +426,12 @@ export default function BlogInner({ post, related }) {
                       className="btn-p text-white font-display font-bold text-xs px-4 py-2 rounded-full inline-flex items-center gap-1.5">
                       Hire Me <i className="bi bi-arrow-right" />
                     </Link>
-                  </div>
+                  </div> */}
 
                   {/* Share Sidebar */}
                   <div className="rounded-2xl p-5"
                     style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-                    <div className="font-display font-extrabold text-sm text-white mb-4">Share this Article</div>
+                    <div className="font-display font-bold text-lg text-white mb-4">Share this Article</div>
                     <div className="flex gap-2">
                       {[
                         { icon: "bi bi-twitter-x", href: "#" },
@@ -332,11 +468,11 @@ export default function BlogInner({ post, related }) {
                   style={{ background: "#1c2128", border: "1px solid rgba(255,255,255,.06)" }}
                   data-aos="fade-up" data-aos-delay={i * 80}>
                   <div className="h-auto w-full flex items-center justify-center text-4xl relative" style={{ background: rpost.thumbBg }}>
-                     <img
-          src={post.bannerImage}
-          alt={post.title}
-          className="w-full h-full object-cover"
-        />
+                    <img
+                      src={post.bannerimage}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-4 flex flex-col flex-1">
                     {/* <div className="flex items-center gap-2 text-xs text-white/35 mb-2">

@@ -65,7 +65,7 @@ export default function JourneySection() {
               } 
               subtitle="A timeline of growth, learning, and delivering results."
               className="mb-6 text-center"
-              titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+              titleClassName="font-display font-extrabold text-3xl sm:text-4xl tracking-tight text-white leading-tight mb-5"
             />
 
 

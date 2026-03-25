@@ -66,7 +66,7 @@ export default function About() {
                 </>
               }
               className="mb-6"
-              titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+              titleClassName="font-display font-extrabold text-3xl sm:text-4xl  tracking-tight text-white leading-tight mb-5"
             />
             <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4">
               I&apos;m a professional Web Designer, WordPress Developer, and SEO Specialist based in Gujarat, India.

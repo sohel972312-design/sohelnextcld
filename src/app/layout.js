@@ -1,9 +1,11 @@
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
 import TiltInit from "@/components/ui/TiltInit";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgressBar from "@/components/ui/ProgressBar";
-
+const inter = Inter({ subsets: ["latin"] });
+const syne = Syne({ subsets: ["latin"] });
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://sohelmalek.com";
 
@@ -88,7 +90,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className=" " style={{ fontFamily: "Poppins, sans-serif" }}>
+      <body className={inter.className}>
         <ProgressBar />
         <Header />
         <main>{children}</main>

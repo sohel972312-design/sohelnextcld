@@ -59,7 +59,7 @@ export default function CTASection({
           description={description}
           className="mb-6"
           eyebrowClassName="justify-center flex"
-          titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-4 leading-tight"
+          titleClassName="font-display font-extrabold text-3xl sm:text-4xl   tracking-tight text-white mb-4 leading-tight"
           descriptionClassName="text-white/70 text-sm sm:text-base mb-6 sm:mb-8 max-w-lg mx-auto"
           data-aos="fade-down"
         />

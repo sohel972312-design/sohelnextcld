@@ -43,7 +43,7 @@ export default function ProjectsPage() {
             title={<>Recent <span className="grad-text">Projects</span></>}
             subtitle="A showcase of websites, designs, and digital experiences I've built for clients worldwide."
             className="mb-8"
-            titleClassName="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+            titleClassName="font-display font-extrabold text-3xl sm:text-4xl tracking-tight text-white leading-tight mb-5"
           />
           <div className="flex flex-wrap justify-center gap-3 text-sm text-white/50" data-aos="fade-up" data-aos-delay="100">
             {[{ icon: "bi bi-grid-3x3-gap-fill text-[#6cb8e6]", text: "30+ Projects" }, { icon: "bi bi-people-fill text-green-400", text: "13+ Clients" }, { icon: "bi bi-globe2 text-[#f4c542]", text: "Worldwide" }].map((b) => (

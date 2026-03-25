@@ -79,19 +79,19 @@ export default function Hero() {
           {/* Text */}
           <div>
             <div
-              className="animate-fade-down inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-6 text-[#6cb8e6] font-bold tracking-widest uppercase"
-              style={{ background: "rgba(108,184,230,.12)", border: "1px solid rgba(108,184,230,.25)", fontSize: "clamp(.6rem,.75rem,1rem)" }}
+              className="animate-fade-down inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-6 text-[#6cb8e6] font-bold bg-[rgba(108,184,230,0.12)] border border-[rgba(108,184,230,0.25)] text-[clamp(0.6rem,0.75rem,1rem)] tracking-widest uppercase"
+              
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#6cb8e6] animate-pulse-slow shrink-0" />
               Available for Freelance Work
             </div>
 
             <h1
-              className="animate-fade-left font-display font-extrabold leading-tight tracking-tight mb-3 sm:mb-4"
-              style={{ fontSize: "clamp(2.2rem,6vw,5rem)", animationDelay: ".3s" }}
+              className="animate-fade-left font-display font-extrabold leading-tight tracking-tight mb-3 sm:mb-4 font-syne"
+              style={{ fontSize: "clamp(2.2rem,6vw,4rem)", animationDelay: ".3s" }}
             >
               Hi, I&apos;m<br />
-              <span className="grad-text">Sohel Malek</span>
+              <span className="grad-text font-syne">Sohel Malek</span>
             </h1>
 
             <div className="animate-fade-left font-display font-bold text-base sm:text-xl text-white/60 mb-4 tracking-wide"

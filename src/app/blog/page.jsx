@@ -18,8 +18,8 @@ export default function BlogPage() {
         eyebrow="Blog"
         title={<>Tips, Tutorials &amp; <span className="grad-text">Insights</span></>}
         subtitle="Web design, WordPress, SEO, and digital marketing articles to help your business grow online."
-        primaryLabel="Browse Articles"
-        primaryHref="#blog-grid"
+        primaryLabel="About Me"
+        primaryHref="/about"
         secondaryLabel="Hire Me"
         secondaryHref="/contact"
       />

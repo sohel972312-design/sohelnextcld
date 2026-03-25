@@ -46,7 +46,7 @@ export default function Portfolio() {
           description="Showcasing creative projects blending design, strategy, and innovation."
           data-aos="fade-up"
           className="mb-6 text-center"
-          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-5"
+          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl  tracking-tight text-white leading-tight mb-5"
         />
 
 

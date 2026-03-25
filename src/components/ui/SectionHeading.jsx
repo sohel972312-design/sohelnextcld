@@ -6,9 +6,9 @@ export default function SectionHeading({
   eyebrow,
   title,
   description,
-  className = "text-center mb-10 sm:mb-16",
+  className = "text-center font-syne mb-10 sm:mb-16",
   eyebrowClassName = "",
-  titleClassName = "font-display font-extrabold  text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-4",
+  titleClassName = "font-syne font-extrabold  text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight mb-4",
   descriptionClassName = "text-white/50 text-sm sm:text-base max-w-xl mx-auto",
   children,
   ...props

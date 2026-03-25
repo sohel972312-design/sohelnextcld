@@ -73,11 +73,17 @@ export default function Skills() {
         style={{ background: "radial-gradient(circle,rgba(26,111,168,.07),transparent 70%)", filter: "blur(60px)" }} />
 
       <div className="w93 px-4 sm:px-6 relative z-10">
-        <SectionHeading
+        
+<SectionHeading
           eyebrow="My Stack"
-          title="Skills &amp; Technologies"
+          title={
+            <>Skills & <span className="grad-text">Technologies</span>
+            </>
+          }
           description="The tools and technologies I use to bring ideas to life."
           data-aos="fade-up"
+          className="mb-6 text-center"
+          titleClassName="font-display text-center font-extrabold text-3xl sm:text-4xl  tracking-tight text-white leading-tight mb-5"
         />
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-10">

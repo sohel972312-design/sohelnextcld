@@ -5,7 +5,7 @@ export const blogPosts = [
   {
     id: 1,
     slug: "how-to-build-fast-wordpress-website",
-    title: "How to Build a Fast WordPress Website in 2026",
+    title: "Howlocallll to Build a Fast WordPress Website in 2026",
     excerpt:
       "Speed is everything - a 1-second delay can cost you 7% of conversions. Here's my complete guide to building a blazing-fast WordPress site from scratch.",
     category: "WordPress",
