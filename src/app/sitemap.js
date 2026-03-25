@@ -1,5 +1,3 @@
-// src/app/sitemap.js
-
 import { createClient } from "@supabase/supabase-js";
 
 const BASE_URL = "https://sohelmalek.com";
@@ -11,9 +9,19 @@ const supabase = createClient(
 
 export default async function sitemap() {
 
-  const { data: posts } = await supabase
+  const { data: posts, error } = await supabase
     .from("blogs")
     .select("slug, created_at");
+
+  if (error || !posts) {
+    console.error("Supabase sitemap error:", error);
+    return [
+      {
+        url: BASE_URL,
+        lastModified: new Date(),
+      }
+    ];
+  }
 
   const blogPages = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
@@ -27,7 +35,7 @@ export default async function sitemap() {
       url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1,
     },
     {
       url: `${BASE_URL}/blog`,
