@@ -9,55 +9,33 @@ const supabase = createClient(
 
 export default async function sitemap() {
 
-  // Static pages
   const staticPages = [
-    {
-      url: `${BASE_URL}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    { url: BASE_URL, lastModified: new Date() },
+    { url: `${BASE_URL}/about`, lastModified: new Date() },
+    { url: `${BASE_URL}/services`, lastModified: new Date() },
+    { url: `${BASE_URL}/projects`, lastModified: new Date() },
+    { url: `${BASE_URL}/blog`, lastModified: new Date() },
+    { url: `${BASE_URL}/contact`, lastModified: new Date() },
   ];
 
-  // Fetch posts from Supabase
-const { data: posts, error } = await supabase
-  .from("blog_posts")
-  .select("slug, created_at");
+  try {
 
-const blogPages = posts?.map((post) => ({
-  url: `${BASE_URL}/blog/${post.slug}`,
-  lastModified: new Date(post.created_at),
-})) || [];
+    const { data: posts } = await supabase
+      .from("blog_posts")
+      .select("slug, created_at");
 
-  return [...staticPages, ...blogPages];
+    const blogPages =
+      posts?.map((post) => ({
+        url: `${BASE_URL}/blog/${post.slug}`,
+        lastModified: new Date(post.created_at),
+      })) || [];
+
+    return [...staticPages, ...blogPages];
+
+  } catch (error) {
+
+    console.error("Sitemap error:", error);
+    return staticPages;
+
+  }
 }
