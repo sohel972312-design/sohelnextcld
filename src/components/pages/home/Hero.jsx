@@ -113,7 +113,7 @@ export default function Hero() {
               <Link href="/#portfolio" className="btn-g text-white/80 font-display font-semibold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
                 View Work <i className="bi bi-grid-3x3-gap" />
               </Link>
-              <Link href="https://sohelmalek.com/assets/pdf/sohel-resume.pdf" target="_blank"
+              <Link href="#" target="_blank"
                 className="btn-g text-white/80 font-display font-semibold text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2">
                 CV <i className="bi bi-download" />
               </Link>

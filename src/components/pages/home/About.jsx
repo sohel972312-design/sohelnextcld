@@ -102,7 +102,7 @@ export default function About() {
               <Link href="/contact#contact-form" className="btn-p text-white font-display font-bold text-sm px-5 sm:px-6 py-3 rounded-full inline-flex items-center gap-2">
                 Let&apos;s Work <i className="bi bi-arrow-right" />
               </Link>
-              <Link href="https://sohelmalek.com/assets/pdf/sohel-resume.pdf" target="_blank"
+              <Link href="#" target="_blank"
                 className="btn-g text-white/80 font-display font-semibold text-sm px-5 sm:px-6 py-3 rounded-full inline-flex items-center gap-2">
                 Download CV <i className="bi bi-download" />
               </Link>
