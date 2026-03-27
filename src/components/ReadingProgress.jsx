@@ -14,7 +14,7 @@ export default function ReadingProgress() {
       const read = Math.max(0, -rect.top);
 
       setProgress(Math.min(100, (read / total) * 100));
-    };
+    }; 
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);

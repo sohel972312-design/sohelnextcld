@@ -83,7 +83,7 @@ export default function Hero() {
               
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#6cb8e6] animate-pulse-slow shrink-0" />
-              Available for Freelance Work
+              Available for Freelance Work1
             </div>
 
             <h1
