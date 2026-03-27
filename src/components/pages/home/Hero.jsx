@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* Text */}
-          <div>
+          <div> 
             <div
               className="animate-fade-down inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-6 text-[#6cb8e6] font-bold bg-[rgba(108,184,230,0.12)] border border-[rgba(108,184,230,0.25)] text-[clamp(0.6rem,0.75rem,1rem)] tracking-widest uppercase"
               
