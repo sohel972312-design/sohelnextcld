@@ -41,12 +41,12 @@ export default function ThankYouPage() {
       `}</style>
 
 
-      <main className="relative flex flex-1 items-center justify-center overflow-hidden px-5 pt-30 pb-16">
-         <div class="absolute w-[420px] h-[420px] bg-[#22d3ee] bottom-[-100px] left-[-80px] rounded-full blur-[110px] opacity-[0.14]"></div>
+      <main className="relative flex flex-col items-center justify-center overflow-hidden px-5 pt-30 pb-16 xl:mt-20">
+        <div class="absolute w-[420px] h-[420px] bg-[#22d3ee] bottom-[-100px] left-[-80px] rounded-full blur-[110px] opacity-[0.14]"></div>
         {/* Glow blobs */}
         <div className="pointer-events-none absolute -top-36 -right-20 w-[480px] h-[480px] rounded-full bg-cyan opacity-[0.09] blur-[110px]" />
 
-        <div className="relative z-10 flex flex-col items-center text-center max-w-xl w-full">
+        <div className="relative z-10 flex flex-col items-center text-center   w-full">
 
           {/* Animated checkmark */}
           <div className="relative w-24 h-24 mb-8">
@@ -71,10 +71,11 @@ export default function ThankYouPage() {
           </div>
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-cyan/10 border border-cyan/25 text-cyan text-[11px] font-bold tracking-[0.1em] uppercase px-4 py-1.5 rounded-full mb-5">
-            ✦ Message Received
+          
+          <div className="animate-fade-down inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-6 text-[#26c112] font-bold bg-[rgba(38,193,17,0.12)] border border-[rgba(38,193,17,0.25)] text-[clamp(0.6rem,0.75rem,1rem)] tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#26c112] animate-pulse-slow shrink-0" />
+            Message Received
           </div>
-
 
           <h1
             className="font-head font-black tracking-tight leading-[1.08] mb-4"
@@ -88,7 +89,8 @@ export default function ThankYouPage() {
             Your message has landed safely in my inbox. I personally review
             every enquiry and will get back to you as soon as possible.
           </p>
-
+        </div>
+        <div className="relative z-10 flex flex-col items-center text-center max-w-xl w-full">
           {/* What happens next */}
           <div className="w-full bg-card border border-border rounded-2xl p-6 md:p-8 mb-7 text-left">
             <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-muted mb-5">

@@ -83,7 +83,7 @@ export default function Services() {
             <h3 className="font-display font-extrabold text-lg sm:text-xl text-white mb-1">Ready to build something extraordinary?</h3>
             <p className="text-white/55 text-sm">Let&apos;s discuss your project and bring your vision to life.</p>
           </div>
-          <Link href="#contact" className="btn-p text-white font-display font-bold text-sm px-6 sm:px-7 py-3.5 rounded-full whitespace-nowrap inline-flex items-center gap-2 shrink-0">
+          <Link href="/contact#contact-form" className="btn-p text-white font-display font-bold text-sm px-6 sm:px-7 py-3.5 rounded-full whitespace-nowrap inline-flex items-center gap-2 shrink-0">
             Start a Project <i className="bi bi-arrow-right" />
           </Link>
         </div>

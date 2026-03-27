@@ -40,7 +40,8 @@ export default function Footer() {
             {[
               { href: "/about", label: "About Us" },
               { href: "/services", label: "Services" },
-              { href: "/portfolio", label: "Blog" },
+              { href: "/#portfolio", label: "Projects" },
+              { href: "/blog", label: "Blog" },
               { href: "/contact", label: "Contact" },
             ].map((l, i) => (
               <span key={l.href} className="flex items-center">
