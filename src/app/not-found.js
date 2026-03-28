@@ -14,7 +14,7 @@ export default function PageNotFound() {
       {/* <Noise /> */}
       {/* <Navbar /> */}
 
-      <main className="relative flex flex-1 items-center justify-center overflow-hidden px-5 xl:mt-20 pt-40 pb-20 xl:pt-50">
+      <main className="relative flex flex-1 items-center justify-center overflow-hidden px-5 xl:mt-20 pt-40 pb-20 xl:pt-30">
         {/* Glow blobs */}
         <div className="absolute w-[420px] h-[420px] bg-[#22d3ee] bottom-[-100px] left-[-80px] rounded-full blur-[110px] opacity-[0.14]"></div>
         {/* Glow blobs */}

@@ -18,37 +18,9 @@ export default function BlogInner() {
   const [progress, setProgress] = useState(0);
   const [tocOpen, setTocOpen] = useState(false);
   const [recentPosts, setRecentPosts] = useState([]);
-const router = useRouter();
+  const router = useRouter();
   // Reading progress bar
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!placeholderRef.current || !relatedRef.current) return;
 
-      const placeholderRect = placeholderRef.current.getBoundingClientRect();
-      const relatedRect = relatedRef.current.getBoundingClientRect();
-
-      const HEADER_HEIGHT = 90;
-      const SIDEBAR_HEIGHT = sidebarRef.current?.offsetHeight || 0;
-
-      // 🔹 Top → normal
-      if (placeholderRect.top > HEADER_HEIGHT) {
-        setIsSticky(false);
-        return;
-      }
-
-      // 🔹 Bottom hit (Related section)
-      if (relatedRect.top <= HEADER_HEIGHT + SIDEBAR_HEIGHT) {
-        setIsSticky("bottom");
-        return;
-      }
-
-      // 🔹 Middle → fixed
-      setIsSticky(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
 
   const { slug } = useParams(); // get slug from URL
@@ -58,9 +30,84 @@ const router = useRouter();
 
   const sidebarRef = useRef(null);
   const placeholderRef = useRef(null);
+  const bottomRef = useRef(null);
   const relatedRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [stickyState, setStickyState] = useState("normal");
   const [categories, setCategories] = useState([]);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!sidebarRef.current || !relatedRef.current) return;
+
+  //     const HEADER_HEIGHT = 90;
+
+  //     const sidebarTop = sidebarRef.current.getBoundingClientRect().top;
+  //     const sidebarHeight = sidebarRef.current.offsetHeight;
+  //     const relatedTop = relatedRef.current.getBoundingClientRect().top;
+
+  //     if (sidebarTop > HEADER_HEIGHT) {
+  //       setStickyState("normal");
+  //     }
+  //     else if (relatedTop <= HEADER_HEIGHT + sidebarHeight + 20) {
+  //       setStickyState("bottom");
+  //     }
+  //     else {
+  //       setStickyState("fixed");
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   handleScroll();
+
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
+
+useEffect(() => {
+  const handleScroll = () => {
+    const sidebar = sidebarRef.current;
+    const placeholder = placeholderRef.current;
+    const bottom = bottomRef.current;
+    const header = document.getElementById("header");
+
+    if (!sidebar || !placeholder || !bottom) return;
+
+    const headerHeight = header ? header.offsetHeight : 90;
+    const SPACING = 10; // 10px space
+
+    const placeholderTop = placeholder.getBoundingClientRect().top;
+    const bottomTop = bottom.getBoundingClientRect().top;
+
+    const sidebarHeight = sidebar.offsetHeight;
+
+    if (placeholderTop > headerHeight) {
+      sidebar.style.position = "relative";
+      sidebar.style.top = "0px";
+    }
+
+    else if (bottomTop <= headerHeight + sidebarHeight + SPACING) {
+      sidebar.style.position = "absolute";
+      sidebar.style.top =
+        bottom.offsetTop - sidebarHeight - SPACING + "px";
+    }
+
+    else {
+      sidebar.style.position = "fixed";
+      sidebar.style.top = headerHeight + SPACING + "px"; // header height + 10px space
+      sidebar.style.width = sidebar.parentElement.offsetWidth + "px";
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
+
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("resize", handleScroll);
+  };
+}, []);
 
   useEffect(() => {
     if (!slug) return;
@@ -103,24 +150,24 @@ const router = useRouter();
     fetchBlog();
   }, [slug]);
   // ── Fetch blog from DB ──
-useEffect(() => {
-  if (!slug) return;
+  useEffect(() => {
+    if (!slug) return;
 
-  const fetchBlog = async () => {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const fetchBlog = async () => {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseKey);
+      const { createClient } = await import("@supabase/supabase-js");
+      const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const { data: categoryData } = await supabase
-      .from("blog_posts")
-      .select("category");
+      const { data: categoryData } = await supabase
+        .from("blog_posts")
+        .select("category");
 
-    if (categoryData) {
-      const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
-      setCategories(uniqueCategories);
-    }
+      if (categoryData) {
+        const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
+        setCategories(uniqueCategories);
+      }
 
       if (categoryData) {
         const uniqueCategories = [...new Set(categoryData.map((c) => c.category))];
@@ -169,24 +216,32 @@ useEffect(() => {
 
     fetchBlog();
   }, [slug]);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!placeholderRef.current || !relatedRef.current || !sidebarRef.current) return;
 
-      const HEADER_HEIGHT = 90;
-      const SIDEBAR_HEIGHT = sidebarRef.current.offsetHeight;
+  //     const HEADER_HEIGHT = 90;
 
-      const placeholderTop = placeholderRef.current.getBoundingClientRect().top;
-      const relatedTop = relatedRef.current.getBoundingClientRect().top;
+  //     const placeholderTop = placeholderRef.current.getBoundingClientRect().top;
+  //     const relatedTop = relatedRef.current.getBoundingClientRect().top;
+  //     const sidebarHeight = sidebarRef.current.offsetHeight;
 
-      if (placeholderTop > HEADER_HEIGHT) setIsSticky(false);
-      else if (relatedTop <= HEADER_HEIGHT + SIDEBAR_HEIGHT + 20) setIsSticky("bottom");
-      else setIsSticky(true);
-    };
+  //     if (placeholderTop > HEADER_HEIGHT) {
+  //       setIsSticky(false);
+  //     }
+  //     else if (relatedTop <= HEADER_HEIGHT + sidebarHeight) {
+  //       setIsSticky("bottom");
+  //     }
+  //     else {
+  //       setIsSticky(true);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   handleScroll();
+
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   if (loading) return <div className="text-center py-20 text-white">Loading blog...</div>;
   if (!post) return <div className="text-center py-20 text-white">Blog not found</div>;
@@ -280,10 +335,10 @@ useEffect(() => {
       {/* ── Content Area ── */}
       <section className="py-12 sm:py-16 " style={{ background: "#111416" }} id="related-section">
         <div className="w93 px-4 sm:px-6 relative z-10 ">
-          <div className="grid grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
             {/* Article */}
-            <article id="article-body" className=" col-span-12 lg:col-span-8">
+            <article id="article-body" className=" col-span-1  lg:col-span-8">
               <img
                 src={post.bannerimage}
                 alt={post.title}
@@ -345,56 +400,55 @@ useEffect(() => {
             </article>
 
             {/* Sidebar */}
-            <aside className="hidden lg:block relative col-span-12 lg:col-span-4">
-              <div ref={placeholderRef} />
+            <aside className="hidden lg:block relative col-span-1  lg:col-span-4">
+              <div ref={placeholderRef} ></div>
 
               <div
-                ref={sidebarRef}
-                className={`w-full ${isSticky === true
-                  ? "fixed"
-                  : isSticky === "bottom"
-                    ? "absolute"
-                    : "relative"
-                  }`}
+                ref={sidebarRef} id="sidebarblog"
+                className="w-full"
                 style={{
                   position:
-                    isSticky === true
+                    stickyState === "fixed"
                       ? "fixed"
-                      : isSticky === "bottom"
+                      : stickyState === "bottom"
                         ? "absolute"
                         : "relative",
 
-                  top:
-                    isSticky === true
-                      ? "90px"
-                      : isSticky === "bottom"
-                        ? `${relatedRef.current.offsetTop - sidebarRef.current.offsetHeight - 20}px`
-                        : "auto",
+                  top: stickyState === "fixed" ? "90px" : "auto",
+
+                  width: stickyState === "fixed"
+                    ? sidebarRef.current?.offsetWidth
+                    : "auto",
+
+                  bottom: stickyState === "bottom" ? "0px" : "auto",
                 }}
               >
 
-                <div className="space-y-5">
-                  {/* TOC */}
-                 {categories.length > 0 && (
-  <div className="rounded-2xl p-5 mb-5"
-       style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
-    <div className="font-display font-bold text-lg text-white mb-4">Categories</div>
+                <div
+                  className="space-y-5"
 
-    <ul className="space-y-2">
-      {categories.map((cat) => (
-        <li key={cat}>
-          <button
-            onClick={() => router.push(`/blog?category=${encodeURIComponent(cat)}`)}
-            className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2"
-          >
-            <span className="text-[#6cb8e6]">›</span>
-            {cat}
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+                >
+                  {/* TOC */}
+                  {categories.length > 0 && (
+                    <div className="rounded-2xl p-5 mb-5"
+                      style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(108,184,230,.12)" }}>
+                      <div className="font-display font-bold text-lg text-white mb-4">Categories</div>
+
+                      <ul className="space-y-2">
+                        {categories.map((cat) => (
+                          <li key={cat}>
+                            <button
+                              onClick={() => router.push(`/blog?category=${encodeURIComponent(cat)}`)}
+                              className="text-xs text-white/50 hover:text-[#6cb8e6] transition-colors leading-relaxed flex items-start gap-2"
+                            >
+                              <span className="text-[#6cb8e6]">›</span>
+                              {cat}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   {recentPosts.length > 0 && (
                     <div
                       className="rounded-2xl p-5 mb-5"
@@ -461,6 +515,7 @@ useEffect(() => {
             </aside>
 
           </div>
+          <section ref={bottomRef}> </section>
         </div>
       </section>
 

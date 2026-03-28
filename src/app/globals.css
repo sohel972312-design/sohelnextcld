@@ -770,3 +770,7 @@ select.form-inp option {
     display: none;
   }
 }
+#sidebarblog{
+position: sticky;
+top: 100px;
+}

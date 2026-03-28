@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <nav
-      className="fixed top-0 w-full z-50 transition-all duration-300"
+      className="fixed top-0 w-full z-50 transition-all duration-300" id="header"
       style={{
         background: scrolled ? "rgba(8,12,16,.96)" : "rgba(13,43,69,.85)",
         backdropFilter: "blur(18px)",
