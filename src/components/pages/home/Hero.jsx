@@ -88,7 +88,7 @@ export default function Hero() {
 
             <h1
               className="animate-fade-left font-display font-extrabold leading-tight tracking-tight mb-3 sm:mb-4 font-syne"
-              style={{ fontSize: "clamp(2.2rem,6vw,4rem)", animationDelay: ".3s" }}
+              style={{ fontSize: "clamp(2.2rem,4.25vw,4rem)", animationDelay: ".3s" }}
             >
               Hi, I&apos;m<br />
               <span className="grad-text font-syne">Sohel Malek</span>
@@ -156,7 +156,7 @@ export default function Hero() {
               style={{ width: 300, height: 300, background: "rgba(108,184,230,.05)", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }} />
 
             <div className="relative z-10 animate-float">
-              <svg width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg  className="md:h-96 w-auto lg:h-[30rem]" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="cG" x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stopColor="#0d2b45" stopOpacity=".92" />

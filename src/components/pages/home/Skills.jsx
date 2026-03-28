@@ -21,8 +21,8 @@ const techBadges = [
   { icon: "bi bi-filetype-css text-[#6cb8e6]", label: "CSS3" },
   { icon: "bi bi-filetype-js text-yellow-400", label: "JavaScript" },
   { icon: "bi bi-wordpress text-blue-400", label: "WordPress" },
-  { icon: null, label: "Tailwind", prefix: <span className="text-teal-400 font-mono font-bold text-xs">TW</span> },
-  { icon: null, label: "Bootstrap", prefix: <span className="text-purple-400 font-mono font-bold text-xs">BS</span> },
+  { icon: null, label: "Tailwind", prefix: <span className="text-teal-400 font-mono font-bold text-2xl">TW</span> },
+  { icon: null, label: "Bootstrap", prefix: <span className="text-purple-400 font-mono font-bold text-2xl">BS</span> },
   { icon: "bi bi-pen text-pink-400", label: "Figma" },
   { icon: "bi bi-search text-green-400", label: "SEO" },
   { icon: "bi bi-cart3 text-orange-400", label: "WooCommerce" },
@@ -113,10 +113,10 @@ export default function Skills() {
             <h3 className="font-display font-bold text-lg sm:text-xl text-white mb-5 sm:mb-6">Technologies I Work With</h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {techBadges.map((b) => (
-                <div key={b.label} className="tech-badge glass-card rounded-xl px-3 sm:px-4 py-2 sm:py-3 flex items-center gap-2 cursor-default text-xs sm:text-sm"
+                <div key={b.label} className="tech-badge glass-card rounded-xl flex-col px-3 sm:px-4 py-2 sm:py-3 lg:p-5 flex items-center gap-2 cursor-default text-xs sm:text-sm"
                   style={{ borderColor: "rgba(108,184,230,.12)" }}>
-                  {b.prefix || <i className={b.icon} />}
-                  {b.label}
+                  <div className="text-2xl">{b.prefix || <i className={b.icon} />}</div>
+                  <div>{b.label}</div>
                 </div>
               ))}
             </div>

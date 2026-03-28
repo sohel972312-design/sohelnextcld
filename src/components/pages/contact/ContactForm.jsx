@@ -143,7 +143,7 @@ export default function ContactForm() {
           </div>
 
           {/* Email */}
-          <div>
+          <div  className="col-span-2 md:col-span-1">
             <input
               name="email"
               value={form.email}
@@ -155,7 +155,7 @@ export default function ContactForm() {
           </div>
 
           {/* Phone */}
-          <div>
+          <div  className="col-span-2 md:col-span-1">
             <input
               name="phone"
               value={form.phone}
@@ -167,7 +167,7 @@ export default function ContactForm() {
           </div>
 
           {/* Service */}
-          <div className="sm:col-span-2">
+          <div  className="col-span-2">
             <select
               name="service"
               value={form.service}
@@ -187,7 +187,7 @@ export default function ContactForm() {
           </div>
 
           {/* Message */}
-          <div className="sm:col-span-2">
+          <div  className="col-span-2">
             <textarea
               name="message"
               value={form.message}
@@ -207,7 +207,7 @@ export default function ContactForm() {
           </div>
 
           {/* Submit */}
-          <div className="sm:col-span-2">
+          <div  className="col-span-2">
             <button
               type="submit"
               disabled={loading}
